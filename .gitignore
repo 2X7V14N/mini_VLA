@@ -14,9 +14,13 @@ venv/
 
 # --- 项目产物（不进版本库）---
 data/
-checkpoints/
 logs/
 *.log
+
+# 权重不进版本库（可能几百 MB），但【元数据要进】——
+# 它是复现一次实验的必要信息（配置、指标、对应的 commit）。
+checkpoints/*
+!checkpoints/*.json
 
 # --- 编辑器 ---
 .vscode/

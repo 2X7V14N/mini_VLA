@@ -1,0 +1,92 @@
+{
+  "version": "v1_synthetic_reach",
+  "date": "2026-10-13",
+  "git_commit": "f5c9c6e",
+  "weights_file": "checkpoints/v1_synthetic_reach.pt",
+  "description": "合成 2D 到达任务。模型同时使用视觉、语言、状态，闭环成功率与专家持平。",
+
+  "reproduce": {
+    "command": "python -u scripts/train.py",
+    "note": "固定 SEED=0，重跑应得到同一份数据和同一个模型"
+  },
+
+  "data": {
+    "generator": "src/mini_vla/data/synthetic.py::generate_episode",
+    "paired": true,
+    "n_episodes": 3000,
+    "seed": 0,
+    "train_episodes": 2400,
+    "val_episodes": 300,
+    "test_episodes": 300,
+    "train_samples": 34992,
+    "val_samples": 4372,
+    "test_samples": 4242,
+    "vocab_size": 10,
+    "max_length": 16,
+    "instructions": ["移动到红色目标", "移动到蓝色目标"]
+  },
+
+  "model": {
+    "class": "MiniVLA",
+    "n_params": 990632,
+    "embed_dim": 128,
+    "chunk_size": 4,
+    "action_dim": 2,
+    "state_dim": 2,
+    "num_vision_tokens": 16,
+    "vision_input": "64x64 RGB"
+  },
+
+  "training": {
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "weight_decay": "default (0.01, 未修改)",
+    "batch_size": 16,
+    "pair_loss_weight": 1.0,
+    "n_epochs_max": 120,
+    "early_stop_patience": 20,
+    "stopped_at_epoch": 111,
+    "best_epoch": 91,
+    "best_val_composite": 0.015538
+  },
+
+  "loss": {
+    "note": "composite = base + pair_loss。base = MSE(pred, target)，pair = MSE(红蓝动作差, 专家差)",
+    "train": {"base": 0.004073, "pair": 0.007891, "composite": 0.011964, "n": 34992},
+    "val":   {"base": 0.005488, "pair": 0.010050, "composite": 0.015538, "n": 4372},
+    "test":  {"base": 0.005401, "pair": 0.010474, "composite": 0.015875, "n": 4242}
+  },
+
+  "baselines": {
+    "language_free_lower_bound_val_composite": 0.3044,
+    "note": "任何【完全不看指令】的模型，composite loss 不可能低于此值。0.0155 比它低 20 倍 => 语言确实在被使用。",
+    "predict_zero_random_policy": 0.5136
+  },
+
+  "ablation_val": {
+    "note": "破坏一路输入，看 composite loss 变化。数字越大 = 该路越关键。",
+    "image_zeroed": "+18437%",
+    "instruction_shuffled": "+8672%",
+    "state_zeroed": "+4514%",
+    "red_blue_output_difference": 0.84573
+  },
+
+  "closed_loop_rollout": {
+    "protocol": "200 个随机场景 x 2 条指令 = 400 次 rollout；receding horizon（每次只执行动作块第 1 步）；max_steps=50；success_radius=0.1",
+    "scene_seed": 12345,
+    "random_seed": 999,
+    "reproduce": "python -u scripts/rollout.py",
+    "results": {
+      "model":  {"red_success": 1.000, "blue_success": 0.995, "overall": 0.998, "mean_final_dist": 0.0582, "mean_steps": 7.1},
+      "expert": {"red_success": 1.000, "blue_success": 1.000, "overall": 1.000, "mean_final_dist": 0.0493, "mean_steps": 6.9},
+      "random": {"red_success": 0.070, "blue_success": 0.080, "overall": 0.075, "mean_final_dist": 0.9643, "mean_steps": 47.9}
+    }
+  },
+
+  "known_limitations": [
+    "只适用于 64x64 合成 2D 场景，动作空间 2 维",
+    "只有两条固定指令，语言分支做的是『二分类』而非真正的语言理解",
+    "任务动力学平凡（无接触、无摩擦、无噪声），是模仿学习的『最好情况』",
+    "闭环成功率对测试场景的随机数流敏感（见 docs/experiments/exp001 的注意事项）"
+  ]
+}
