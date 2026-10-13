@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Sampler
 
+from mini_vla.data.instructions import SEEN_TEMPLATES
 from mini_vla.data.dataset import RobotDataset
 from mini_vla.data.split import split_episodes, flatten
 from mini_vla.data.synthetic import generate_episode
@@ -65,7 +66,9 @@ def main():
     print(f"设备: {device}")
     print(f"生成 {N_EPISODES} 个 episode...")
     rng = np.random.default_rng(SEED)
-    episodes = [generate_episode(rng, paired=True) for _ in range(N_EPISODES)]
+    episodes = [generate_episode(rng, paired=True, templates=SEEN_TEMPLATES)
+        for _ in range(N_EPISODES)]
+
 
 
     train_eps, val_eps, test_eps = split_episodes(episodes, seed=SEED)
@@ -239,8 +242,8 @@ def ablation_check(model, loader, device, tokenizer):
 
         # ④ Directly measure whether the instruction changes the action.
         n = token_ids.size(0)
-        red_tokens = tokenizer.encode("移动到红色目标").unsqueeze(0).expand(n, -1).to(device)
-        blue_tokens = tokenizer.encode("移动到蓝色目标").unsqueeze(0).expand(n, -1).to(device)
+        red_tokens  = tokenizer.encode(SEEN_TEMPLATES["红"][0]).unsqueeze(0).expand(n, -1).to(device)
+        blue_tokens = tokenizer.encode(SEEN_TEMPLATES["蓝"][0]).unsqueeze(0).expand(n, -1).to(device)
         red_action = model(image, red_tokens, robot_state)
         blue_action = model(image, blue_tokens, robot_state)
         instruction_delta = (red_action - blue_action).abs().mean().item()

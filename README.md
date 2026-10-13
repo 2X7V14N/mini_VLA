@@ -19,7 +19,7 @@
 | 消融：指令打乱 | loss **+8672%** |
 
 **完整实验记录**：[docs/experiments/exp001_synthetic_reach.md](docs/experiments/exp001_synthetic_reach.md)
-**权重**：`checkpoints/v1_synthetic_reach.pt`（元数据见同名 `.json`）
+**权重**：`checkpoints/v0_synthetic_reach.pt`（元数据见同名 `.json`）
 
 > **"验证 loss 低于语言无关下限 20 倍"是本项目最关键的结论。**
 > 任何完全不看指令的模型，loss 都不可能低于 0.3044。低于它，只可能是真的在用语言。

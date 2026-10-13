@@ -1,8 +1,8 @@
 {
-  "version": "v1_synthetic_reach",
+  "version": "v0_synthetic_reach",
   "date": "2026-10-13",
   "git_commit": "f5c9c6e",
-  "weights_file": "checkpoints/v1_synthetic_reach.pt",
+  "weights_file": "checkpoints/v0_synthetic_reach.pt",
   "description": "合成 2D 到达任务。模型同时使用视觉、语言、状态，闭环成功率与专家持平。",
 
   "reproduce": {

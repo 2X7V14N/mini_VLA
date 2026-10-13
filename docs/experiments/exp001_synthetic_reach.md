@@ -2,8 +2,8 @@
 
 - **日期**：2026-10-13
 - **代码版本**：`f5c9c6e`
-- **权重**：`checkpoints/v1_synthetic_reach.pt`
-- **元数据**：`checkpoints/v1_synthetic_reach.json`
+- **权重**：`checkpoints/v0_synthetic_reach.pt`
+- **元数据**：`checkpoints/v0_synthetic_reach.json`
 
 ---
 

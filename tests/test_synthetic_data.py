@@ -1,7 +1,9 @@
 """合成数据的测试。"""
-
 import numpy as np
 import pytest
+from mini_vla.data.instructions import (
+    SEEN_TEMPLATES, UNSEEN_KNOWN_CHARS, UNSEEN_NOVEL_CHARS,
+)
 
 from mini_vla.data.synthetic import (
     _world_to_pixel,
@@ -19,7 +21,10 @@ GREEN_COLOR = (0, 255, 0)
 RED_COLOR   = (255, 0, 0)
 BLUE_COLOR  = (0, 0, 255)
 
-INSTRUCTIONS = ("移动到红色目标", "移动到蓝色目标")
+# 词表全集（SEEN + 两组 UNSEEN 的所有字符）
+ALL_INSTRUCTIONS = (
+    SEEN_TEMPLATES["红"] + SEEN_TEMPLATES["蓝"]
+)
 
 
 def _centroid_of(image, color):
@@ -198,7 +203,8 @@ def test_episode_sample_schema():
 
         # 指令
         assert isinstance(s["instruction"], str), f"{ctx} instruction 不是字符串"
-        assert s["instruction"] in INSTRUCTIONS, f"{ctx} instruction 内容非法"
+        pool = set(SEEN_TEMPLATES["红"] + SEEN_TEMPLATES["蓝"])
+        assert s["instruction"] in pool, f"{ctx} instruction 内容非法"
 
         # 状态
         assert s["robot_state"].shape == (2,), f"{ctx} robot_state 形状错"
@@ -228,8 +234,8 @@ def test_instruction_matches_action_direction():
         episode = generate_episode(rng)
         s = episode[0]                       # 只查第一帧：那时离目标最远，动作最大
 
-        # ① 根据指令决定该看哪个颜色
-        color = RED_COLOR if s["instruction"] == "移动到红色目标" else BLUE_COLOR
+        # ① 判断指令里有没有"红"字
+        color = RED_COLOR if "红" in s["instruction"] else BLUE_COLOR
 
         # ② 从图像里找出那个目标的实际位置
         goal = _find_goal_world_position(s["image"], color)
@@ -260,3 +266,49 @@ def test_paired_samples_share_inputs():
         assert np.array_equal(a["robot_state"], b["robot_state"])  # 同状态
         assert a["instruction"] != b["instruction"]            # 不同指令
         assert not np.allclose(a["action_chunk"], b["action_chunk"])  # 不同动作
+
+def test_templates_are_balanced():
+    """红蓝两组的模板必须一一对应，唯一的区别是颜色字。
+
+    抓的是"某个颜色有更多变的说法"——那会污染
+    "红蓝是否都能区分"的结论。
+    """
+    red, blue = SEEN_TEMPLATES["红"], SEEN_TEMPLATES["蓝"]
+    assert len(red) == len(blue)
+    for r, b in zip(red, blue):
+        # 把颜色字替换成占位符后，两句必须完全相同
+        assert r.replace("红", "X") == b.replace("蓝", "X"), f"{r} 和 {b} 不平行"
+
+
+def test_instruction_comes_from_template_pool():
+    """生成的指令必须来自模板池，不能是硬编码的字符串。"""
+    ep = generate_episode(np.random.default_rng(0))
+    pool = set(SEEN_TEMPLATES["红"] + SEEN_TEMPLATES["蓝"])
+    for s in ep:
+        assert s["instruction"] in pool
+
+
+def test_paired_samples_use_different_colors():
+    """配对样本必须指向【不同颜色】的目标。
+
+    抓的是"other_instruction 也用了同一个颜色的模板"——
+    那样 pair_loss 就学不到颜色区分了，而且不报错。
+    """
+    ep = generate_episode(np.random.default_rng(0), paired=True)
+    for i in range(0, len(ep), 2):
+        a, b = ep[i]["instruction"], ep[i + 1]["instruction"]
+        assert ("红" in a) != ("红" in b), "配对样本用了同一种颜色"
+
+
+def test_template_pool_has_no_single_color_words():
+    """同一个词不能只出现在一个颜色的模板里。
+
+    抓的是"泄漏"：如果「靠近」只出现在红色模板里，
+    模型可以靠这个词作弊，而不是靠颜色。
+    """
+    red_words = set("".join(SEEN_TEMPLATES["红"]))
+    blue_words = set("".join(SEEN_TEMPLATES["蓝"]))
+    only_red = red_words - blue_words - {"红"}
+    only_blue = blue_words - red_words - {"蓝"}
+    assert not only_red, f"这些字只出现在红色模板里: {only_red}"
+    assert not only_blue, f"这些字只出现在蓝色模板里: {only_blue}"
