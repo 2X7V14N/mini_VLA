@@ -1,0 +1,24 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.so
+
+# --- 打包产物（pip install -e . 会生成）---
+*.egg-info/
+build/
+dist/
+
+# --- 虚拟环境 ---
+.venv/
+venv/
+
+# --- 项目产物（不进版本库）---
+data/
+checkpoints/
+logs/
+*.log
+
+# --- 编辑器 ---
+.vscode/
+.idea/
+.pytest_cache/
