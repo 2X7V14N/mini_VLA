@@ -312,3 +312,26 @@ def test_template_pool_has_no_single_color_words():
     only_blue = blue_words - red_words - {"蓝"}
     assert not only_red, f"这些字只出现在红色模板里: {only_red}"
     assert not only_blue, f"这些字只出现在蓝色模板里: {only_blue}"
+
+
+def _normalize_color(text):
+    """把颜色字替换成占位符，用来比较两句的句式是否相同。"""
+    return text.replace("红", "X").replace("蓝", "X")
+
+
+def test_paired_samples_share_template_index():
+    """配对的两条样本必须用【同一个模板编号】。
+
+    抓的是"红蓝各自随机抽模板"——那会让 pair_loss 同时处理
+    颜色差异和句式差异两个变量，信噪比变差，训练更难收敛。
+    """
+    rng = np.random.default_rng(0)
+    for _ in range(50):
+        ep = generate_episode(rng, paired=True)
+        for i in range(0, len(ep), 2):
+            a = ep[i]["instruction"]
+            b = ep[i + 1]["instruction"]
+            assert _normalize_color(a) == _normalize_color(b), (
+                f"配对句式不同: {a!r} vs {b!r}\n"
+                f"（应该用同一个模板编号，而不是各自随机抽）"
+            )

@@ -20,6 +20,8 @@ BATCH_SIZE = 16
 LR = 1e-3
 N_EPOCHS = 120
 PAIR_LOSS_WEIGHT = 1.0
+GRAD_CLIP = 1.0          # 梯度范数上限，压住 pair_loss 造成的尖峰
+DIAG_EVERY = 10          # 每多少轮打印一次"红蓝输出差异"
 
 
 class PairedBatchSampler(Sampler[list[int]]):
@@ -120,14 +122,19 @@ def main():
     bad_epochs = 0
 
     for epoch in range(1, N_EPOCHS + 1):
-        train_loss = train_one_epoch(model, train_loader, optimizer, criterion, device)
-        val_loss = evaluate(model, val_loader, criterion, device)
+        tr = train_one_epoch(model, train_loader, optimizer, criterion, device)
+        va = evaluate(model, val_loader, criterion, device)
 
-        print(f"epoch {epoch:3d}  train={train_loss:.5f}  val={val_loss:.5f}")
+        if epoch % DIAG_EVERY == 0 or epoch == 1:
+            delta = language_diagnostic(model, train_loader, tokenizer, device)
+            print(f"epoch {epoch:3d}  "
+                  f"train base={tr['base']:.4f} pair={tr['pair']:.4f} tot={tr['total']:.4f}  "
+                  f"val base={va['base']:.4f} pair={va['pair']:.4f} tot={va['total']:.4f}  "
+                  f"红蓝差异={delta:.4f}", flush=True)
 
-        # 早停逻辑
-        if val_loss < best_val:
-            best_val = val_loss
+        # 早停逻辑（比的是 total —— 训练和验证用的是同一个目标函数）
+        if va["total"] < best_val:
+            best_val = va["total"]
             best_state = {k: v.clone() for k, v in model.state_dict().items()}
             bad_epochs = 0
         else:
@@ -159,7 +166,7 @@ def main():
 
 def train_one_epoch(model, loader, optimizer, criterion, device):
     model.train()                    # 切到训练模式
-    total_loss = 0.0
+    sums = {"total": 0.0, "base": 0.0, "pair": 0.0}
     total_samples = 0
 
     for batch in loader:
@@ -170,19 +177,29 @@ def train_one_epoch(model, loader, optimizer, criterion, device):
 
         optimizer.zero_grad()                                   # ①
         prediction = model(image, token_ids, robot_state)        # ②
-        loss = compute_loss(prediction, target, criterion)
-        loss.backward()                                          # ④
+        total, base, pair = compute_loss(prediction, target, criterion)
+        total.backward()                                         # ④
+
+        # 梯度裁剪：pair_loss 的梯度较大，偶尔会把参数推得过远
+        # （V0 训练时出现过 loss 突然飙回 1.5 的震荡）。
+        # 裁剪把梯度范数限制在 max_norm 以内，压住这种尖峰。
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=GRAD_CLIP)
+
         optimizer.step()                                         # ⑤
 
-        total_loss += loss.item() * image.size(0)
-        total_samples += image.size(0)
+        n = image.size(0)
+        sums["total"] += total.item() * n
+        sums["base"]  += base.item()  * n
+        sums["pair"]  += pair.item()  * n
+        total_samples += n
 
-    return total_loss / total_samples
+    return {k: v / total_samples for k, v in sums.items()}
+
 
 @torch.no_grad()
 def evaluate(model, loader, criterion, device):
     model.eval()                     # 关掉 dropout
-    total_loss = 0.0
+    sums = {"total": 0.0, "base": 0.0, "pair": 0.0}
     total_samples = 0
 
     for batch in loader:
@@ -192,23 +209,62 @@ def evaluate(model, loader, criterion, device):
         target      = batch["action_chunk"].to(device)
 
         prediction = model(image, token_ids, robot_state)
-        loss = compute_loss(prediction, target, criterion)
+        total, base, pair = compute_loss(prediction, target, criterion)
 
-        total_loss += loss.item() * image.size(0)
-        total_samples += image.size(0)
+        n = image.size(0)
+        sums["total"] += total.item() * n
+        sums["base"]  += base.item()  * n
+        sums["pair"]  += pair.item()  * n
+        total_samples += n
 
-    return total_loss / total_samples
+    return {k: v / total_samples for k, v in sums.items()}
+
 
 def compute_loss(prediction, target, criterion):
-    """Compute the same objective for training and validation."""
+    """训练和验证用同一个目标函数。
+
+    返回 (total, base, pair) 三个标量。
+    【必须拆开返回】—— 只看 total 无法判断卡住的是动作误差还是语言差分误差，
+    这两种情况要查的方向完全相反。
+    """
     base_loss = criterion(prediction, target)
 
-    # Each even/odd pair has the same image and state but opposite
-    # instructions.  The difference term directly trains the language path.
+    # 偶数位和奇数位是配对样本：同图、同状态、【同句式】、不同颜色
     prediction_delta = prediction[0::2] - prediction[1::2]
     target_delta = target[0::2] - target[1::2]
     pair_loss = criterion(prediction_delta, target_delta)
-    return base_loss + PAIR_LOSS_WEIGHT * pair_loss
+
+    total = base_loss + PAIR_LOSS_WEIGHT * pair_loss
+    return total, base_loss, pair_loss
+
+
+@torch.no_grad()
+def language_diagnostic(model, loader, tokenizer, device):
+    """测"同图同状态、换指令，输出变多少"。
+
+    这是最直接的"语言有没有在被使用"的指标：
+        ≈ 0.00   模型完全忽略指令
+        > 0.30   模型在用指令
+
+    【在训练中途测】—— 不用等到最后才知道语言通路是在发育还是已经塌缩。
+    V0 的教训：塌缩发生后梯度为零，永远出不来。越早看到越好。
+    """
+    was_training = model.training
+    model.eval()
+    batch = next(iter(loader))
+    image = batch["image"].to(device)
+    robot_state = batch["robot_state"].to(device)
+    n = image.size(0)
+
+    enc_r = tokenizer.encode(SEEN_TEMPLATES["红"][0]).unsqueeze(0).expand(n, -1).to(device)
+    enc_b = tokenizer.encode(SEEN_TEMPLATES["蓝"][0]).unsqueeze(0).expand(n, -1).to(device)
+
+    a_r = model(image, enc_r, robot_state)
+    a_b = model(image, enc_b, robot_state)
+
+    if was_training:
+        model.train()
+    return (a_r - a_b).abs().mean().item()
 
 
 def ablation_check(model, loader, device, tokenizer):
