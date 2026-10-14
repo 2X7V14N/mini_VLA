@@ -1,0 +1,74 @@
+{
+  "version": "v1_natural_language",
+  "date": "2026-10-14",
+  "weights_file": "checkpoints/v1_natural_language.pt",
+  "previous": "v0_synthetic_reach",
+  "description": "在 V0 的基础上把指令从 2 条固定字符串扩展为多说法自然语言。验证模型理解的是指令【含义】而非记住固定文本。",
+
+  "reproduce": {
+    "train": "python -u scripts/train.py",
+    "evaluate": "python -u scripts/eval_language.py"
+  },
+
+  "what_changed_from_v0": {
+    "task": "不变（64x64 合成 2D 到达，动作 2 维）",
+    "model": "不变（MiniVLA 结构完全相同）",
+    "instruction": "2 条固定字符串 -> 每颜色 5 条训练说法 + 3 条测试说法",
+    "paired_by_same_template_index": "红蓝配对使用同一个模板编号，使 pair_loss 只关注颜色差异",
+    "grad_clip": "新增 clip_grad_norm_(max_norm=1.0)",
+    "loss_logging": "compute_loss 改为返回 (total, base, pair)，三者分开记录",
+    "live_diagnostic": "新增 language_diagnostic()，训练中途即可观察'红蓝输出差异'"
+  },
+
+  "data": {
+    "generator": "generate_episode(..., paired=True, templates=SEEN_TEMPLATES)",
+    "n_episodes": 3000,
+    "seed": 0,
+    "train_samples": 34906,
+    "val_samples": 4470,
+    "test_samples": 4270,
+    "vocab_size": 19,
+    "vocab_chars": ["体", "到", "动", "去", "标", "物", "的", "目", "移", "红", "色", "蓝", "走", "近", "那", "里", "靠"],
+    "max_length": 16,
+    "seen_templates_per_color": 5,
+    "unseen_known_chars_per_color": 3,
+    "unseen_novel_chars_per_color": 3
+  },
+
+  "model": {
+    "class": "MiniVLA",
+    "n_params": 991784,
+    "note": "比 V0 多 1152 个参数，来自更大的词表 embedding (19 vs 10)"
+  },
+
+  "loss": {
+    "train": {"base": 0.004847, "pair": 0.009292, "total": 0.014139, "n": 34906},
+    "val":   {"base": 0.007622, "pair": 0.014906, "total": 0.022528, "n": 4470},
+    "test":  {"base": 0.007147, "pair": 0.014059, "total": 0.021206, "n": 4270}
+  },
+
+  "ablation_val": {
+    "image_zeroed": "+10241%",
+    "instruction_shuffled": "+9982%",
+    "state_zeroed": "+1817%",
+    "red_blue_output_difference": 1.07511
+  },
+
+  "language_generalization": {
+    "protocol": "同一批 100 个测试场景，三组说法各跑一遍；每组内【每条】说法都测。receding horizon，max_steps=50，success_radius=0.1",
+    "results": {
+      "seen":         {"red": 1.000, "blue": 1.000, "overall": 1.000, "n": 1000},
+      "unseen_known": {"red": 1.000, "blue": 1.000, "overall": 1.000, "n": 600},
+      "unseen_novel": {"red": 1.000, "blue": 1.000, "overall": 1.000, "n": 600},
+      "expert":       {"overall": 1.000, "n": 200}
+    },
+    "conclusion": "模型对完全未见的说法（含 6 个 <UNK> 字符）仍然 100% 成功 -> 学到的是'提取颜色词并走向对应目标'，而不是记住训练句子。"
+  },
+
+  "known_limitations": [
+    "任务仍然是 2D 合成场景，动作 2 维",
+    "模型实际学到的是'在句子里找红/蓝'—— 是关键词匹配层面的理解，不是句法/语义理解",
+    "未测试：词序、否定、空间关系、多步指令",
+    "【待做对照实验】用只有 1 条模板的数据训练，验证 UNSEEN 测试是否真有区分力"
+  ]
+}
