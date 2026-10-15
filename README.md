@@ -8,6 +8,31 @@
 
 ## 当前状态
 
+### V2.0：三维末端到达（2026-10-15）
+
+**环境从自写的 numpy 2D 场景升级为 MuJoCo 物理仿真，机器人从一个点变成 3 自由度机械臂。语言刻意退回固定 2 条 —— 只增加"三维"这一个主要变化。**
+
+| 策略 | 红色 | 蓝色 | 总体 | **无效动作率** | 步数 | 最终距离 |
+|---|---|---|---|---|---|---|
+| **模型** | 100.0% | 99.0% | **99.5%** | **0.3%** | 6.0 | 0.0130 |
+| 专家 | 100.0% | 100.0% | 100.0% | 0.3% | 5.9 | 0.0091 |
+| 随机 | 1.0% | 2.0% | 1.5% | **21.6%** | 19.8 | 0.2848 |
+
+| 指标 | 值 |
+|---|---|
+| 参数量 | 991,340 |
+| 验证 loss | 0.004516 |
+| 语言无关下限 | 0.1528（本模型比它低 34 倍） |
+| 消融：指令打乱 | loss **+1032%** |
+| 训练平台期 | **80 轮**（V1 是 37 轮 —— 三维确实更难） |
+
+**⭐ 无效动作率是本轮最有价值的指标**：模型 0.3% 和专家相同，随机策略 21.6%。**这说明模型学会了"把末端保持在够程内"** —— 只看成功率看不出这个差别。
+
+- 完整记录：[exp003_3d_reach.md](docs/experiments/exp003_3d_reach.md)
+- 权重：`checkpoints/v2_3d_reach.pt`
+
+> **结论的边界**：3 自由度简化臂，只做"到达方块上方"，**没有夹爪、接触、抓取**。语言本轮被刻意简化。
+
 ### V1：自然语言泛化（2026-10-14）
 
 **指令从 2 条固定字符串扩展为多说法自然语言。验证模型理解的是【含义】而非记住固定文本。**
@@ -85,26 +110,40 @@ python -u scripts/rollout.py
 ```
 mini-VLA/
 ├── src/mini_vla/
-│   ├── contracts.py              Observation / Action 数据契约
+│   ├── contracts.py              Observation / Action 数据契约（V0 遗留，未接入管道）
 │   ├── data/
-│   │   ├── synthetic.py          合成数据生成器（渲染 + 专家动作 + episode）
+│   │   ├── synthetic.py          【V0/V1】合成 2D 数据生成器
+│   │   ├── instructions.py       【V1】指令模板池（多说法）
 │   │   ├── dataset.py            样本 → 张量；PairedBatchSampler（保持配对）
 │   │   └── split.py              按 episode 划分
-│   ├── models/
+│   ├── models/                   ← V0/V1/V2 全部复用，未改代码
 │   │   ├── vision.py             CNN 视觉编码器    (B,3,64,64) → (B,16,128)
 │   │   ├── text.py               字符级 tokenizer + 文本编码器
-│   │   ├── state.py              状态编码器        (B,2) → (B,1,128)
+│   │   ├── state.py              状态编码器        (B,D_state) → (B,1,128)
 │   │   ├── fusion.py             多模态融合（Transformer）
-│   │   ├── action.py             动作头            (B,128) → (B,4,2)
+│   │   ├── action.py             动作头            (B,128) → (B,H,D_action)
 │   │   └── mini_vla.py           组装全部模块
+│   ├── simulation/               ← 【V2.0 新增】MuJoCo 三维环境
+│   │   ├── scene.xml             MJCF 场景（3 自由度臂 + 2 个方块）
+│   │   ├── ik.py                 Jacobian IK 求解器
+│   │   └── reach_env.py          采样 / 渲染 / 专家 / 数据生成
 │   └── evaluation/
-│       └── rollout.py            闭环 rollout + 专家/随机基线
+│       └── rollout.py            【V0/V1】2D 闭环 rollout
 ├── scripts/
-│   ├── train.py                  训练入口
-│   └── rollout.py                闭环评估入口
+│   ├── train.py                  训练入口（V2.0 的数据源 + state_dim=3）
+│   ├── rollout.py                【V0/V1】2D 闭环评估
+│   ├── eval_3d.py                【V2.0】3D 闭环评估
+│   ├── view_scene.py             MuJoCo 交互窗口（调试用）
+│   ├── render_test.py            渲染成图 + 像素统计（调相机用）
+│   ├── ik_test.py                IK 单点测试
+│   ├── reach_demo.py             末端在两点间移动（交互演示）
+│   ├── chunk_test.py             expert_chunk 验证
+│   └── episode_test.py           generate_episode 验证
 ├── tests/                        60+ 个测试
-├── docs/experiments/             实验记录
-└── checkpoints/                  权重（不进版本库）
+├── docs/
+│   ├── ROADMAP.md                版本路线图与待办
+│   └── experiments/              实验记录（exp001 / exp002 / exp003）
+└── checkpoints/                  权重（.pt 不进版本库，.json 元数据进）
 ```
 
 ---

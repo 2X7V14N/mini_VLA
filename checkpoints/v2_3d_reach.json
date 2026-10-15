@@ -1,0 +1,116 @@
+{
+  "version": "v2_3d_reach",
+  "date": "2026-10-15",
+  "weights_file": "checkpoints/v2_3d_reach.pt",
+  "previous": "v1_natural_language",
+  "description": "V2.0：把二维点到达升级为 MuJoCo 三维机械臂末端到达。环境升级，语言刻意保持最简单。",
+
+  "reproduce": {
+    "train": "python -u scripts/train.py",
+    "evaluate": "python -u scripts/eval_3d.py"
+  },
+
+  "what_changed_from_v1": {
+    "environment": "自写 numpy 2D 场景 -> MuJoCo 物理仿真",
+    "space": "2D -> 3D",
+    "robot": "一个点 -> 3 自由度机械臂",
+    "image": "numpy 手画圆和方块 -> MuJoCo 光照渲染",
+    "state": "[x, y] -> [x, y, z]",
+    "action": "(4, 2) -> (4, 3)",
+    "control": "位置直接相加 -> IK 把末端目标翻译成关节角",
+    "language": "多说法模板 -> 【刻意退回】固定 2 条指令",
+    "model_architecture": "完全不变",
+    "training_method": "完全不变（配对 + pair_loss + 早停 + 梯度裁剪）"
+  },
+
+  "scene": {
+    "file": "src/mini_vla/simulation/scene.xml",
+    "arm": "3 自由度（底座旋转 + 肩 + 肘），连杆长 0.12 / 0.16 / 0.13",
+    "reach": 0.29,
+    "block_sampling": "半径 [0.10, 0.26]，两两间距 > 0.12（实测 400/400 可达）",
+    "hover_height": 0.10,
+    "block_z": 0.04
+  },
+
+  "data": {
+    "generator": "src/mini_vla/simulation/reach_env.py::generate_episode",
+    "paired": true,
+    "n_episodes": 3000,
+    "seed": 0,
+    "generation_time_minutes": 2.4,
+    "train_samples": 32958,
+    "val_samples": 3972,
+    "test_samples": 4218,
+    "samples_per_episode": 13.3,
+    "vocab_size": 11,
+    "vocab_chars": ["上", "到", "动", "块", "方", "移", "红", "色", "蓝"],
+    "max_length": 16,
+    "instructions": ["移动到红色方块上方", "移动到蓝色方块上方"]
+  },
+
+  "model": {
+    "class": "MiniVLA",
+    "n_params": 991340,
+    "note": "比 V1 少 444 个：词表 19->11 减 1024，state 2->3 加 64，action 2->3 加 516"
+  },
+
+  "training": {
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "batch_size": 16,
+    "pair_loss_weight": 1.0,
+    "grad_clip": 1.0,
+    "n_epochs": 120,
+    "early_stop_patience": 20,
+    "note": "跑满 120 轮，早停未触发（验证 loss 一直在缓慢改善）"
+  },
+
+  "training_curve": {
+    "plateau": "epoch 1-79，tot ≈ 0.58，红蓝差异 ≈ 0.0000（模型在忽略语言）",
+    "transition": "epoch 80-81，tot 0.5220 -> 0.0640，红蓝差异 0 -> 0.46",
+    "converged": "epoch 82-120，tot ≈ 0.007",
+    "best_val": 0.004516,
+    "note": "【和 V1 同一个相变现象，但平台期从 37 轮变成 80 轮 —— 三维确实更难】"
+  },
+
+  "baselines": {
+    "language_free_lower_bound": 0.1528,
+    "note": "任何【完全不看指令】的模型，composite loss 不可能低于此值。0.00452 比它低 34 倍。"
+  },
+
+  "ablation": {
+    "train": {"image_zeroed": "+22969%", "instruction_shuffled": "+11311%",
+              "state_zeroed": "+27285%", "red_blue_output_difference": 0.37931},
+    "val":   {"image_zeroed": "+5331%",  "instruction_shuffled": "+1032%",
+              "state_zeroed": "+3596%",  "red_blue_output_difference": 0.52990}
+  },
+
+  "closed_loop_rollout": {
+    "protocol": "100 个测试场景 x 2 条指令 = 200 次 rollout；三种策略跑【同一批场景】；receding horizon；max_steps=20；success_radius=0.03",
+    "scene_seed": 12345,
+    "random_seed": 999,
+    "results": {
+      "model":  {"red": 1.000, "blue": 0.990, "overall": 0.995,
+                 "invalid_action_ratio": 0.003, "mean_steps": 6.0, "mean_final_dist": 0.0130},
+      "expert": {"red": 1.000, "blue": 1.000, "overall": 1.000,
+                 "invalid_action_ratio": 0.003, "mean_steps": 5.9, "mean_final_dist": 0.0091},
+      "random": {"red": 0.010, "blue": 0.020, "overall": 0.015,
+                 "invalid_action_ratio": 0.216, "mean_steps": 19.8, "mean_final_dist": 0.2848}
+    }
+  },
+
+  "key_findings": [
+    "模型成功率 99.5%，和专家（100%）几乎持平 —— 协变量偏移没有造成损失",
+    "模型的无效动作率 0.3%，和专家相同 —— 说明模型学会了把末端保持在够程内",
+    "随机策略的无效动作率 21.6%，是模型的 72 倍 —— 只看成功率看不出这个差别",
+    "相变现象和 V1 一致，但平台期从 37 轮变成 80 轮，验证了'三维更难'"
+  ],
+
+  "known_limitations": [
+    "3 自由度简化机械臂，不是真实的 7 自由度 Franka",
+    "只做'到达方块上方'，没有夹爪、接触、抓取",
+    "语言退回固定 2 条，本轮不验证语言泛化",
+    "动作是'末端位置增量'（环境做 IK），不是关节空间控制",
+    "成功判据是单一位置阈值，不要求连续多步满足"
+  ]
+}

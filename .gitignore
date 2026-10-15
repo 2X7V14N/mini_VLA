@@ -27,3 +27,6 @@ checkpoints/*
 .vscode/
 .idea/
 .pytest_cache/
+
+# MuJoCo 运行时日志
+MUJOCO_LOG.TXT

@@ -5,10 +5,12 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Sampler
 
-from mini_vla.data.instructions import SEEN_TEMPLATES
+
 from mini_vla.data.dataset import RobotDataset
 from mini_vla.data.split import split_episodes, flatten
-from mini_vla.data.synthetic import generate_episode
+from mini_vla.simulation.reach_env import (
+    generate_episode, RED_INSTRUCTION, BLUE_INSTRUCTION,
+)
 from mini_vla.models.mini_vla import MiniVLA
 from mini_vla.models.text import SimpleCharTokenizer
 
@@ -21,7 +23,7 @@ LR = 1e-3
 N_EPOCHS = 120
 PAIR_LOSS_WEIGHT = 1.0
 GRAD_CLIP = 1.0          # 梯度范数上限，压住 pair_loss 造成的尖峰
-DIAG_EVERY = 10          # 每多少轮打印一次"红蓝输出差异"
+DIAG_EVERY = 1          # 每多少轮打印一次"红蓝输出差异"
 
 
 class PairedBatchSampler(Sampler[list[int]]):
@@ -68,8 +70,13 @@ def main():
     print(f"设备: {device}")
     print(f"生成 {N_EPISODES} 个 episode...")
     rng = np.random.default_rng(SEED)
-    episodes = [generate_episode(rng, paired=True, templates=SEEN_TEMPLATES)
-        for _ in range(N_EPISODES)]
+    episodes = []
+    for i in range(N_EPISODES):
+        episodes.append(generate_episode(rng, paired=True))
+        if (i + 1) % 500 == 0:
+            print(f"  已生成 {i + 1}/{N_EPISODES} 个 episode ...", flush=True)
+
+
 
 
 
@@ -107,7 +114,13 @@ def main():
         ),
     )
 
-    model = MiniVLA(vocab_size=tokenizer.vocab_size, max_length=MAX_LENGTH)
+    model = MiniVLA(
+    vocab_size=tokenizer.vocab_size,
+    max_length=MAX_LENGTH,
+    state_dim=3,        
+    action_dim=3,       
+    chunk_size=4,       
+    )
     model.to(device)
 
     criterion = nn.MSELoss()
@@ -256,8 +269,9 @@ def language_diagnostic(model, loader, tokenizer, device):
     robot_state = batch["robot_state"].to(device)
     n = image.size(0)
 
-    enc_r = tokenizer.encode(SEEN_TEMPLATES["红"][0]).unsqueeze(0).expand(n, -1).to(device)
-    enc_b = tokenizer.encode(SEEN_TEMPLATES["蓝"][0]).unsqueeze(0).expand(n, -1).to(device)
+    enc_r = tokenizer.encode(RED_INSTRUCTION).unsqueeze(0).expand(n, -1).to(device)
+    enc_b = tokenizer.encode(BLUE_INSTRUCTION).unsqueeze(0).expand(n, -1).to(device)
+
 
     a_r = model(image, enc_r, robot_state)
     a_b = model(image, enc_b, robot_state)
@@ -298,8 +312,9 @@ def ablation_check(model, loader, device, tokenizer):
 
         # ④ Directly measure whether the instruction changes the action.
         n = token_ids.size(0)
-        red_tokens  = tokenizer.encode(SEEN_TEMPLATES["红"][0]).unsqueeze(0).expand(n, -1).to(device)
-        blue_tokens = tokenizer.encode(SEEN_TEMPLATES["蓝"][0]).unsqueeze(0).expand(n, -1).to(device)
+        red_tokens  = tokenizer.encode(RED_INSTRUCTION).unsqueeze(0).expand(n, -1).to(device)
+        blue_tokens = tokenizer.encode(BLUE_INSTRUCTION).unsqueeze(0).expand(n, -1).to(device)
+
         red_action = model(image, red_tokens, robot_state)
         blue_action = model(image, blue_tokens, robot_state)
         instruction_delta = (red_action - blue_action).abs().mean().item()
