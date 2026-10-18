@@ -1,0 +1,14 @@
+....................................                                     [100%]
+36 passed in 2.19s
+
+======================================================================
+ģ�������֤ loss: 0.02253   �ʱ� 19
+
+˵����                                ��ɫ       ��ɫ       ����     ��������
+------------------------------------------------------------------
+SEEN��������                       100.0%   100.0%   100.0%     1000
+UNSEEN_KNOWN����˵��/���֣�           100.0%   100.0%   100.0%      600
+UNSEEN_NOVEL����˵��/���֣�           100.0%   100.0%   100.0%      600
+ר�ң����գ�                                           100.0%      200
+D:\miniconda3\envs\mini-vla\Lib\site-packages\torch\nn\modules\transformer.py:529: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\NestedTensorImpl.cpp:181.)
+  output = torch._nested_tensor_from_mask(

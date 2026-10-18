@@ -4,8 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mini-vla"
-version = "0.1.0"
+version = "1.1.0"
+description = "A small, reproducible vision-language-action learning project with 2D V1 and V1.1 grasp-and-place tasks."
+readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+train = [
+    "torch>=2.0",
+]
+dev = [
+    "pytest>=7.0",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

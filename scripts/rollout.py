@@ -28,7 +28,11 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # ① 加载模型和词表
-    ckpt = torch.load("checkpoints/best.pt", map_location=device, weights_only=False)
+    ckpt = torch.load(
+        "checkpoints/v1_natural_language.pt",
+        map_location=device,
+        weights_only=False,
+    )
     tokenizer = SimpleCharTokenizer(ckpt["vocab"], max_length=ckpt["max_length"])
     print(f"模型的最佳验证 loss: {ckpt['best_val']:.5f}")
     print(f"设备: {device}")

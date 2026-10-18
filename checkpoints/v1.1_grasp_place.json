@@ -1,0 +1,27 @@
+{
+  "version": "V1.1",
+  "checkpoint": "v1.1_grasp_place.pt",
+  "best_val_loss": 0.05992,
+  "data": {
+    "path": "data/v1.1",
+    "train_rollouts": 1000,
+    "val_rollouts": 200,
+    "test_rollouts": 200
+  },
+  "closed_loop": {
+    "scenes": 100,
+    "episodes": 200,
+    "success_rate": 0.96,
+    "red_success_rate": 0.96,
+    "blue_success_rate": 0.96,
+    "color_selection_accuracy": 1.0,
+    "capture_rate": 0.965,
+    "carry_success_after_capture": 0.995,
+    "random_success_rate": 0.0,
+    "seed": 4242
+  },
+  "tests": {
+    "pytest_passed": 36
+  },
+  "notes": "Weights and generated data are intentionally excluded from Git; regenerate with the documented scripts."
+}

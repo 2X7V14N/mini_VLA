@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-18",
+  "python": "D:\\miniconda3\\envs\\mini-vla\\python.exe",
+  "pytest_returncode": 0,
+  "pytest_passed": 36,
+  "eval_returncode": 0,
+  "language_generalization": {
+    "SEEN": {
+      "red": 100.0,
+      "blue": 100.0,
+      "overall": 100.0,
+      "n": 1000
+    },
+    "UNSEEN_KNOWN": {
+      "red": 100.0,
+      "blue": 100.0,
+      "overall": 100.0,
+      "n": 600
+    },
+    "UNSEEN_NOVEL": {
+      "red": 100.0,
+      "blue": 100.0,
+      "overall": 100.0,
+      "n": 600
+    }
+  },
+  "expert": {
+    "overall": 100.0,
+    "n": 200
+  }
+}

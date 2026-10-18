@@ -4,8 +4,13 @@
 差异只能归因于"说法"，没有其他混淆变量。
 """
 
+import sys
+from pathlib import Path
+
 import numpy as np
 import torch
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from mini_vla.data.instructions import (
     SEEN_TEMPLATES, UNSEEN_KNOWN_CHARS, UNSEEN_NOVEL_CHARS,
@@ -30,7 +35,11 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # ① 加载模型（用 V1 的 checkpoint）
-    ckpt = torch.load("checkpoints/best.pt", map_location=device, weights_only=False)
+    ckpt = torch.load(
+        "checkpoints/v1_natural_language.pt",
+        map_location=device,
+        weights_only=False,
+    )
     tokenizer = SimpleCharTokenizer(ckpt["vocab"], max_length=ckpt["max_length"])
     model = MiniVLA(vocab_size=tokenizer.vocab_size, max_length=ckpt["max_length"])
     model.to(device)
