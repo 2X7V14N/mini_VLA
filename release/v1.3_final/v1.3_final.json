@@ -1,0 +1,47 @@
+{
+  "release": "v1.3_final",
+  "model_type": "LanguageConditionedMiniVLA3Color",
+  "checkpoint": "checkpoints/v1.3_final.pt",
+  "init_checkpoint": "checkpoints/v1.3_base.pt",
+  "state_spec": ["x", "y", "holding", "gripper_open"],
+  "state_dim": 4,
+  "action_dim": 3,
+  "chunk_size": 4,
+  "best_validation_loss": 0.03392646353096256,
+  "training": {
+    "data": "data/v1.3_state4_round3_targeted_replay",
+    "epochs_max": 40,
+    "stopped_epoch": 23,
+    "learning_rate": 0.00001,
+    "old_replay_multiplier": 2,
+    "correction_multiplier": 1,
+    "open_correction_multiplier": 1,
+    "close_correction_multiplier": 1,
+    "move_to_zone_correction_multiplier": 1,
+    "samples_per_bucket": 32,
+    "early_stopping_patience": 8
+  },
+  "evaluation": {
+    "standard": "official",
+    "scene_seed": 20261105,
+    "scenes": 200,
+    "trials": 1800,
+    "successes": 1630,
+    "success_rate": 0.9055555555555556,
+    "placement_zone_side_length": 0.30,
+    "close_enter_tol": 0.085,
+    "zone_tol": 0.106,
+    "phase_max_ticks": {
+      "MOVE_TO_OBJECT": 260,
+      "CLOSE": 28,
+      "MOVE_TO_ZONE": 400,
+      "OPEN": 28
+    },
+    "total_max_ticks": 1950
+  },
+  "artifacts": {
+    "results": "reports/v1.3_final_results.json",
+    "failures": "reports/v1.3_final_failures.json",
+    "release_document": "docs/V1.3_RELEASE.md"
+  }
+}

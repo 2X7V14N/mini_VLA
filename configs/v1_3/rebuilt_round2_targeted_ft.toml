@@ -1,0 +1,30 @@
+# V1.3 round2 targeted fine-tuning plan.
+# This file records the exact command; the training script receives CLI args.
+data = "data/v1.3_state4_round3_targeted_replay"
+init_checkpoint = "checkpoints/v1.3_base.pt"
+output_checkpoint = "checkpoints/v1.3_ft.pt"
+
+epochs = 60
+batch_ticks = 8
+learning_rate = 0.00002
+min_epochs = 8
+patience = 10
+min_pair_ratio = 0.95
+
+correction_data = true
+balanced_mixture = true
+samples_per_bucket = 32
+old_replay_multiplier = 1
+correction_multiplier = 3
+open_correction_multiplier = 2
+close_correction_multiplier = 2
+move_to_zone_correction_multiplier = 3
+yellow_combo_multiplier = 1
+
+focus = ["MOVE_TO_ZONE", "CLOSE", "OPEN", "OBJECT_SLIPPED", "MAX_TICKS"]
+evaluation_standard = "official"
+evaluation_scene_seed = 20261105
+evaluation_scenes = 200
+
+# Planned command:
+# python scripts/v1_3/train_v13.py --data data/v1.3_state4_round3_targeted_replay --init-ckpt checkpoints/v1.3_base.pt --correction-data --balanced-mixture --samples-per-bucket 32 --old-replay-multiplier 1 --correction-multiplier 3 --open-correction-multiplier 2 --close-correction-multiplier 2 --move-to-zone-correction-multiplier 3 --yellow-combo-multiplier 1 --epochs 60 --batch-ticks 8 --lr 2e-5 --min-epochs 8 --patience 10 --min-pair-ratio 0.95 --out v1.3_ft

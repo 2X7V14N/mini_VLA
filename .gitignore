@@ -13,7 +13,7 @@ dist/
 venv/
 
 # --- 项目产物（不进版本库）---
-data/
+/data/
 logs/
 *.log
 train_log.txt
@@ -22,6 +22,10 @@ train_log.txt
 # 它是复现一次实验的必要信息（配置、指标、对应的 commit）。
 checkpoints/*
 !checkpoints/*.json
+!checkpoints/v1.3_init.pt
+!checkpoints/v1.3_base.pt
+!checkpoints/v1.3_ft.pt
+!checkpoints/v1.3_final.pt
 
 # --- 编辑器 ---
 .vscode/

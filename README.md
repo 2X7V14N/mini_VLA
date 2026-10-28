@@ -1,6 +1,6 @@
 # Mini-VLA
 
-从零搭建、训练和评估一个小型视觉-语言-动作（VLA）模型。项目按版本逐步增加难度，当前正式版本是 **V1.1**：在 V1 的二维红蓝目标选择基础上，完成抓取、搬运和放置。
+从零搭建、训练和评估一个小型视觉-语言-动作（VLA）模型。当前最新验收版本是 **V1.3**：二维三色抓取放置，按语言指令选择方块与放置区。V1、V1.1 和 V1.2 保留为历史回归基线。
 
 ## 版本状态
 
@@ -8,7 +8,12 @@
 |---|---|---|
 | V0 | 二维固定指令到达 | 已完成 |
 | V1 | 二维红蓝双目标 + 自然语言指令，到达指定目标 | 已完成，保留为回归基线 |
-| **V1.1** | 二维红蓝双目标抓取并放入固定区域 | **当前正式版本** |
+| **V1.1** | 二维红蓝双目标抓取并放入固定区域 | 已完成，回归基线 |
+| **V1.2** | 二维红蓝双目标抓取并放入随机红/蓝区域（64×64 图像，fine_tol=0.08） | 已完成验收，历史基线 |
+| **V1.3** | 二维三色方块和三色放置区，四维机器人状态 | **已按 `official` 标准验收** |
+| **V1.5** | 二维移动方块与移动放置区 | **重新规划中，模型已清理** |
+| V1.6 | V1.5c 验收后定义下一个单一难点 | 待定 |
+| V2.0 | 更强自然语言泛化 | 后续规划 |
 
 V1.1 仍然是二维任务，不引入三维高度、关节角、逆运动学或 MuJoCo。这样可以单独验证视觉、语言、状态和动作闭环，而不把问题混入三维控制误差。
 
@@ -81,9 +86,9 @@ V1 的代码和评测仍然保留，用于回归比较：
 
 ```powershell
 python -m pytest -q
-python -u scripts/train.py
-python -u scripts/rollout.py
-python -u scripts/eval_language.py
+python -u scripts/v1/train.py
+python -u scripts/v1/rollout.py
+python -u scripts/v1/eval_language.py
 ```
 
 V1 输入为 `image + instruction + [x, y]`，输出为四步二维移动动作。V1 的实验记录见 [exp002_natural_language.md](docs/experiments/exp002_natural_language.md)。
@@ -93,7 +98,7 @@ V1 输入为 `image + instruction + [x, y]`，输出为四步二维移动动作�
 ### 1. 生成数据
 
 ```powershell
-python scripts/record_grasp_place.py
+python scripts/v1_1/record_grasp_place.py
 ```
 
 默认生成 `data/v1.1`，包含 train/val/test 三个划分。数据文件是实验产物，默认被 `.gitignore` 排除；需要时可用相同脚本和随机种子重建。
@@ -101,13 +106,13 @@ python scripts/record_grasp_place.py
 ### 2. 检查数据契约
 
 ```powershell
-python scripts/check_v11_dataset.py --data data/v1.1
+python scripts/v1_1/check_v11_dataset.py --data data/v1.1
 ```
 
 ### 3. 训练模型
 
 ```powershell
-python scripts/train_v11.py --data data/v1.1
+python scripts/v1_1/train_v11.py --data data/v1.1
 ```
 
 训练结果默认写入 `checkpoints/v1.1_grasp_place.pt`。权重文件默认不提交到 Git，避免仓库被二进制实验产物污染。
@@ -115,7 +120,7 @@ python scripts/train_v11.py --data data/v1.1
 ### 4. 闭环评测
 
 ```powershell
-python scripts/eval_v11_closed_loop.py \
+python scripts/v1_1/eval_v11_closed_loop.py \
   --data data/v1.1 \
   --ckpt checkpoints/v1.1_grasp_place.pt \
   --scenes 100
@@ -124,12 +129,31 @@ python scripts/eval_v11_closed_loop.py \
 ### 5. 交互式可视化演示
 
 ```powershell
-python scripts/demo_grasp_place.py \
+python scripts/v1_1/demo_grasp_place.py \
   --checkpoint checkpoints/v1.1_grasp_place.pt \
   --interval 0.05
 ```
 
 窗口会显示红蓝目标、机器人起点、固定放置区、夹爪轨迹、当前阶段和 `holding` 状态。终端输入 `red`/`blue` 或 `红色`/`蓝色` 选择任务。
+
+## V1.2 验收结果
+
+V1.2 在 64×64 图像中随机化红、蓝放置区，并使用 fine_tol=0.08 的安全松手容差。模型输入仍为图像、任务指令和 `[x, y, holding]`；放置区坐标不作为特权状态输入。
+
+| 指标 | 结果 |
+|---|---:|
+| 到达指定方块 | 99.8% |
+| 落在指定放置区 | 95.9% |
+| 完整成功 | **95.0%（760/800）** |
+| 图像置零 / 方块指令打乱 / 区域指令打乱 | 均为 0.0% |
+
+正式验收记录、数据整合策略、失败构成和复核命令见 [V1.2_RELEASE.md](docs/V1.2_RELEASE.md)。机器可读指标见 reports/v1.2_acceptance_64_close08_policy_ft70.json。V1.2 正式模型统一命名为 `checkpoints/v1.2_final.pt`，但原始 checkpoint 当前未保留；V1.2 的实现、数据和评测脚本仍保留在仓库中。
+
+## V1.3 验收结果
+
+正式基线为 `checkpoints/v1.3_final.pt`。在 200 个固定生成场景、9 种颜色组合（1800 次闭环）上，按唯一 `official` 标准取得 **90.56%（1630/1800）**，超过 90% 验收线。最终落点评分区域为边长 `0.30` 的正方形；运行图像和动作过程保持原样。详细记录见 [V1.3_RELEASE.md](docs/V1.3_RELEASE.md) 和 [official 标准](docs/V1.3_EVAL_STANDARD_OFFICIAL.md)。
+
+V1.5 已重新规划为移动方块与移动放置区任务，分为单独移动和同时移动三个阶段。V1.3 基线、数据和评测口径继续保留；具体范围见 [V1.5_PLAN.md](docs/V1.5_PLAN.md)，正式训练由用户启动。
 
 ## 项目结构
 
@@ -142,19 +166,24 @@ src/mini_vla/
     grasp_place_expert.py    V1.1 专家动作
     grasp_place_data.py      V1.1 配对数据与加载
     grasp_place_render.py    V1.1 64×64 渲染
-  models/                    视觉、文本、状态、融合和动作头
+    *_v13.py                 V1.3 三色场景、专家、环境、渲染、数据和评测标准
+  models/                    共用视觉、文本、状态、融合和动作头
+    mini_vla_v13.py          V1.3 三色模型
+  training_v13.py            V1.3 分组损失与训练目标
   evaluation/                V1 评测模块
 scripts/
-  train.py                   V1 训练
-  rollout.py                 V1 闭环评测
-  train_v11.py               V1.1 训练
-  eval_v11_closed_loop.py    V1.1 模型闭环评测
-  eval_grasp_place_expert.py V1.1 专家验收
-  check_v11_dataset.py       V1.1 数据契约和泄露检查
-  demo_grasp_place.py        V1.1 交互式模型演示
+  v1/                        V1 训练、rollout 和语言评估
+  v1_1/                      V1.1 环境、录数、训练、评测与演示
+  v1_2/                      V1.2 数据、训练、迁移与评测
+  v1_3/                      V1.3 数据、训练、迁移、纠错与评测
+  README.md                  脚本目录索引
 tests/                       V1 回归测试
-docs/                        计划、路线图和实验记录
+docs/                        各版本计划、验收记录、标准和实验记录
 ```
+
+所有可执行训练、数据和评测脚本均按所属版本归档；`scripts/` 根目录只保留索引。
+`src/mini_vla` 放可导入的环境、数据、模型与训练模块，V1.3 的模块通过 `_v13`
+后缀标识，供版本脚本和测试共同使用。
 
 ## 可复现性约定
 
@@ -168,4 +197,4 @@ red_t, blue_t, red_t+1, blue_t+1, ...
 
 ## 许可证与后续
 
-当前项目用于学习和实验验证。V1.1 是稳定基线；后续 V1.2 应在保持 V1/V1.1 回归测试通过的前提下，一次只增加一个主要难度因素。
+当前项目用于学习和实验验证。V1.3 是最新验收版本；V1.5 已重新规划，动态数据和模型尚未开始训练。V1 至 V1.2 保留为历史回归基线。

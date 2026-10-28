@@ -1,0 +1,69 @@
+# V1.3 from V1.2 recovery experiment.
+# The original V1.2 checkpoint is absent, so stage 0 reconstructs it from the
+# preserved accepted V1.2 data before applying the existing migration scripts.
+
+[v12_rebuild]
+data = "data/v1.2_correction_64_close08_policy_ft70"
+output_checkpoint = "checkpoints/v1.2_recovered.pt"
+epochs = 60
+batch = 64
+learning_rate = 0.0001
+min_epochs = 10
+no_plot = true
+command = "python scripts/v1_2/train_v12.py --data data/v1.2_correction_64_close08_policy_ft70 --epochs 60 --batch 64 --lr 1e-4 --min-epochs 10 --out v1.2_recovered --no-plot"
+
+[v13_color_migration]
+input_checkpoint = "checkpoints/v1.2_recovered.pt"
+output_checkpoint = "checkpoints/v1.3_from_v12_init.pt"
+command = "python scripts/v1_3/migrate_v12_to_v13.py --src checkpoints/v1.2_recovered.pt --out checkpoints/v1.3_from_v12_init.pt"
+
+[v13_state4_migration]
+input_checkpoint = "checkpoints/v1.3_from_v12_init.pt"
+output_checkpoint = "checkpoints/v1.3_from_v12_state4_init.pt"
+command = "python scripts/v1_3/migrate_v13_state4.py --src checkpoints/v1.3_from_v12_init.pt --out checkpoints/v1.3_from_v12_state4_init.pt"
+
+[v13_full_train]
+data = "data/v1.3_state4_three_color_1000_200_200"
+init_checkpoint = "checkpoints/v1.3_from_v12_state4_init.pt"
+output_checkpoint = "checkpoints/v1.3_from_v12_round1.pt"
+epochs = 100
+batch_ticks = 8
+learning_rate = 0.0001
+min_epochs = 10
+patience = 15
+min_pair_ratio = 0.95
+command = "python scripts/v1_3/train_v13.py --data data/v1.3_state4_three_color_1000_200_200 --init-ckpt checkpoints/v1.3_from_v12_state4_init.pt --epochs 100 --batch-ticks 8 --lr 1e-4 --min-epochs 10 --patience 15 --min-pair-ratio 0.95 --out v1.3_from_v12_round1"
+
+[v13_targeted_finetune]
+data = "data/v1.3_state4_round3_targeted_replay"
+init_checkpoint = "checkpoints/v1.3_from_v12_round1.pt"
+output_checkpoint = "checkpoints/v1.3_from_v12_round2_targeted_ft.pt"
+epochs = 60
+batch_ticks = 8
+learning_rate = 0.00002
+min_epochs = 8
+patience = 10
+min_pair_ratio = 0.95
+correction_data = true
+balanced_mixture = true
+samples_per_bucket = 32
+old_replay_multiplier = 1
+correction_multiplier = 3
+open_correction_multiplier = 2
+close_correction_multiplier = 2
+move_to_zone_correction_multiplier = 3
+yellow_combo_multiplier = 1
+command = "python scripts/v1_3/train_v13.py --data data/v1.3_state4_round3_targeted_replay --init-ckpt checkpoints/v1.3_from_v12_round1.pt --correction-data --balanced-mixture --samples-per-bucket 32 --old-replay-multiplier 1 --correction-multiplier 3 --open-correction-multiplier 2 --close-correction-multiplier 2 --move-to-zone-correction-multiplier 3 --yellow-combo-multiplier 1 --epochs 60 --batch-ticks 8 --lr 2e-5 --min-epochs 8 --patience 10 --min-pair-ratio 0.95 --out v1.3_from_v12_round2_targeted_ft"
+
+[evaluation]
+script = "scripts/v1_3/eval_v13_closed_loop.py"
+scene_seed = 20261105
+scenes = 200
+trials = 1800
+standard = "official"
+close_enter_tol = 0.085
+zone_tol = 0.106
+phase_max_ticks = [260, 28, 400, 28]
+total_max_ticks = 1950
+placement_zone_side_length = 0.30
+pass_rate = 0.90

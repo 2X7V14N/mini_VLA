@@ -1,0 +1,4782 @@
+{
+  "checkpoint": "checkpoints\\v1.3_final.pt",
+  "evaluation_standard": {
+    "name": "official",
+    "close_enter_tol": 0.085,
+    "zone_tol": 0.106,
+    "phase_max_ticks": {
+      "MOVE_TO_OBJECT": 260,
+      "CLOSE": 28,
+      "MOVE_TO_ZONE": 400,
+      "OPEN": 28
+    },
+    "total_max_ticks": 1950,
+    "capture_radius": 0.1,
+    "zone_half": 0.15,
+    "placement_zone_side_length": 0.3
+  },
+  "official_placement_zone_side_length": 0.3,
+  "scene_source": "generated(seed=20261105)",
+  "rows": [
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.4557785464149706,
+        -0.3796047835325954
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 2,
+      "trial_id": "0002:yellow:blue",
+      "instruction": "抓取黄色方块并放置到蓝色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 22,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.026810322784206773,
+        0.18253393203837862
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 4,
+      "trial_id": "0004:blue:yellow",
+      "instruction": "把蓝色目标放进黄色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 53,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.1596856404045232,
+        0.6063086288351688
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 28
+      },
+      "scene_index": 4,
+      "trial_id": "0004:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 43,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.18444822265614816,
+        0.6852152490194305
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 7,
+      "trial_id": "0007:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3824794692570803,
+        0.2089502157593497
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 12,
+      "trial_id": "0012:blue:yellow",
+      "instruction": "把蓝色方块放到黄色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.27261488448393706,
+        -0.36252780926410755
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 12,
+      "trial_id": "0012:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.27261488448393706,
+        -0.36252780926410755
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 12,
+      "trial_id": "0012:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 39,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.2916931337654196,
+        -0.022605888327209334
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 13,
+      "trial_id": "0013:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 40,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.2916931337654196,
+        -0.022605888327209334
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 13,
+      "trial_id": "0013:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.6221632595849256,
+        0.6545558297450716
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 14,
+        "OPEN": 0
+      },
+      "scene_index": 14,
+      "trial_id": "0014:red:yellow",
+      "instruction": "抓取红色方块并放置到黄色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1934710972202194,
+        0.4771458519881106
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 28
+      },
+      "scene_index": 17,
+      "trial_id": "0017:yellow:blue",
+      "instruction": "抓取黄色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 13,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.42142499016705715,
+        -0.5762942800219343
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 18,
+      "trial_id": "0018:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 468,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.028939083565969914,
+        -0.5631856186964938
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 64,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 21,
+      "trial_id": "0021:red:yellow",
+      "instruction": "把红色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 44,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.36565419429939705,
+        -0.21412547173451837
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 5,
+        "OPEN": 28
+      },
+      "scene_index": 21,
+      "trial_id": "0021:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 21,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.14737753553198063,
+        -0.3885378053092122
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 22,
+      "trial_id": "0022:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 43,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.8382300900227831,
+        -0.013654033422632068
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 5,
+        "OPEN": 28
+      },
+      "scene_index": 23,
+      "trial_id": "0023:red:red",
+      "instruction": "抓取红色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 45,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3271727297254572,
+        -0.698939539952647
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 3,
+        "OPEN": 28
+      },
+      "scene_index": 24,
+      "trial_id": "0024:blue:red",
+      "instruction": "把蓝色方块放到红色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 17,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.09663633145007139,
+        0.12264096391420043
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 0
+      },
+      "scene_index": 25,
+      "trial_id": "0025:red:blue",
+      "instruction": "把红色目标放进蓝色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.29810488397938006,
+        -0.5495784046297307
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 25,
+      "trial_id": "0025:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.15028322235609604,
+        -0.006892381940512449
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 28,
+      "trial_id": "0028:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.15028322235609604,
+        -0.006892381940512449
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 28,
+      "trial_id": "0028:red:blue",
+      "instruction": "把红色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.15028322235609604,
+        -0.006892381940512449
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 28,
+      "trial_id": "0028:red:yellow",
+      "instruction": "把红色目标放进黄色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.18316723484385478,
+        -0.10892371076462398
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 29,
+      "trial_id": "0029:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.18316723484385478,
+        -0.10892371076462398
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 29,
+      "trial_id": "0029:yellow:blue",
+      "instruction": "抓取黄色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.18316723484385478,
+        -0.10892371076462398
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 29,
+      "trial_id": "0029:yellow:yellow",
+      "instruction": "抓取黄色方块并放置到黄色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.34470277431996443,
+        -0.020954288216735173
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 30,
+      "trial_id": "0030:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 27,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1583993409578762,
+        -0.03719465688986572
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 31,
+      "trial_id": "0031:blue:blue",
+      "instruction": "把蓝色目标放进蓝色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 19,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.21448668933220288,
+        -0.3234699278788832
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 32,
+      "trial_id": "0032:blue:yellow",
+      "instruction": "抓取蓝色方块并放置到黄色位置"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 17,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.18659215583388988,
+        0.1656931030435609
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 0
+      },
+      "scene_index": 35,
+      "trial_id": "0035:red:yellow",
+      "instruction": "抓取红色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 18,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.18272540391697834,
+        0.11451838488091622
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 0
+      },
+      "scene_index": 35,
+      "trial_id": "0035:blue:yellow",
+      "instruction": "抓取蓝色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 54,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.09834423125467145,
+        0.47213890105245815
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 28
+      },
+      "scene_index": 38,
+      "trial_id": "0038:blue:red",
+      "instruction": "抓取蓝色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 18,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.12747836209419164,
+        -0.061316065582424174
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 40,
+      "trial_id": "0040:blue:yellow",
+      "instruction": "把蓝色目标放进黄色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 50,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.484049338295638,
+        0.3364302463299066
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 28
+      },
+      "scene_index": 43,
+      "trial_id": "0043:red:yellow",
+      "instruction": "把红色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 17,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5217446965150939,
+        0.11386833774015226
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 44,
+      "trial_id": "0044:blue:yellow",
+      "instruction": "抓取蓝色方块并放置到黄色位置"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 7,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3147255827999623,
+        0.34287291082311944
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 45,
+      "trial_id": "0045:red:red",
+      "instruction": "把红色方块放到红色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 21,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.4543397486969939,
+        -0.16427150938462157
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 14,
+        "OPEN": 0
+      },
+      "scene_index": 45,
+      "trial_id": "0045:red:blue",
+      "instruction": "把红色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.21047893550474633,
+        -0.1532700042389794
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 14,
+        "OPEN": 0
+      },
+      "scene_index": 45,
+      "trial_id": "0045:blue:yellow",
+      "instruction": "把蓝色方块放到黄色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 45,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3104418570170144,
+        0.3209128505674492
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 3,
+        "OPEN": 28
+      },
+      "scene_index": 46,
+      "trial_id": "0046:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 8,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.056064854822558186,
+        -0.48653394530248883
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 46,
+      "trial_id": "0046:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 55,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.1833246171895349,
+        -0.36926104187945713
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 15,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 49,
+      "trial_id": "0049:blue:blue",
+      "instruction": "把蓝色目标放进蓝色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1581395526240974,
+        -0.5622187010615652
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 51,
+      "trial_id": "0051:blue:red",
+      "instruction": "把蓝色方块放到红色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1581395526240974,
+        -0.5622187010615652
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 51,
+      "trial_id": "0051:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1581395526240974,
+        -0.5622187010615652
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 51,
+      "trial_id": "0051:blue:yellow",
+      "instruction": "把蓝色方块放到黄色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 15,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.07153341353715348,
+        -0.24031484652542923
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 51,
+      "trial_id": "0051:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 22,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3147350606048711,
+        -0.5597381118603134
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 13,
+        "OPEN": 0
+      },
+      "scene_index": 52,
+      "trial_id": "0052:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 17,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3774985177821082,
+        -0.06579673468931599
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 52,
+      "trial_id": "0052:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.12958631388186437,
+        0.11117354193988727
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 3,
+        "OPEN": 28
+      },
+      "scene_index": 53,
+      "trial_id": "0053:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 37,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.07396009184953267,
+        0.5055620631178349
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 53,
+      "trial_id": "0053:yellow:yellow",
+      "instruction": "抓取黄色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 415,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2300693999694715,
+        -0.22816947243508123
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 54,
+      "trial_id": "0054:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 45,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.6319598765243563,
+        -0.6866024147271448
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 28
+      },
+      "scene_index": 56,
+      "trial_id": "0056:red:red",
+      "instruction": "抓取红色方块并放置到红色位置"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4062344874267513,
+        0.10753257693358831
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 57,
+      "trial_id": "0057:red:red",
+      "instruction": "把红色方块放到红色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4062344874267513,
+        0.10753257693358831
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 57,
+      "trial_id": "0057:red:yellow",
+      "instruction": "把红色方块放到黄色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 44,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        1.0397261415830779,
+        0.7591032160827281
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 28
+      },
+      "scene_index": 58,
+      "trial_id": "0058:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 19,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.132112387527575,
+        -0.49322863244871695
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 12,
+        "OPEN": 0
+      },
+      "scene_index": 60,
+      "trial_id": "0060:yellow:red",
+      "instruction": "把黄色方块放到红色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 27,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.580545848828989,
+        -0.6771117367817201
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 0
+      },
+      "scene_index": 61,
+      "trial_id": "0061:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.11016426548055158,
+        0.2646923674753091
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 6,
+        "OPEN": 28
+      },
+      "scene_index": 62,
+      "trial_id": "0062:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2456910157738147,
+        -0.21859560984103593
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 63,
+      "trial_id": "0063:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 41,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.22009854127759132,
+        -0.09263974424323318
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 65,
+      "trial_id": "0065:blue:red",
+      "instruction": "抓取蓝色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 51,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.22009854127759132,
+        -0.09263974424323318
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 23,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 65,
+      "trial_id": "0065:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.22009854127759132,
+        -0.09263974424323318
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 65,
+      "trial_id": "0065:blue:yellow",
+      "instruction": "抓取蓝色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 417,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.25023085442014287,
+        0.09635349876153557
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 67,
+      "trial_id": "0067:blue:red",
+      "instruction": "把蓝色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 21,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5089186221480908,
+        0.2326005160192401
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 0
+      },
+      "scene_index": 67,
+      "trial_id": "0067:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 13,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3965330410674731,
+        0.412347043746253
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 69,
+      "trial_id": "0069:blue:red",
+      "instruction": "把蓝色方块放到红色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "DROP_OUTSIDE",
+      "failure": "DROP_OUTSIDE",
+      "ticks": 26,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": true,
+      "final_object": [
+        -0.05935306793393799,
+        -0.38182467100388373
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 4
+      },
+      "scene_index": 69,
+      "trial_id": "0069:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3443307072428889,
+        0.15871529669715068
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 71,
+      "trial_id": "0071:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3443307072428889,
+        0.15871529669715068
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 71,
+      "trial_id": "0071:yellow:yellow",
+      "instruction": "抓取黄色方块并放置到黄色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 21,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.1208449818594745,
+        -0.5698633932976713
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 73,
+      "trial_id": "0073:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 20,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.20290944538569053,
+        0.5618847973538368
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 74,
+      "trial_id": "0074:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 11,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.1558703644368737,
+        -0.13281524805682443
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 76,
+      "trial_id": "0076:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 24,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.41319671016266835,
+        -0.040319273502928285
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 77,
+      "trial_id": "0077:blue:yellow",
+      "instruction": "抓取蓝色方块并放置到黄色位置"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 20,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.19933625782572476,
+        0.15498532286089073
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 78,
+      "trial_id": "0078:red:yellow",
+      "instruction": "把红色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 17,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2620088451333553,
+        0.1547420472263953
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 78,
+      "trial_id": "0078:blue:yellow",
+      "instruction": "把蓝色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 30,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.4046188904111847,
+        0.20094343039122575
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 81,
+      "trial_id": "0081:blue:yellow",
+      "instruction": "把蓝色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.11661111322473403,
+        -0.08308103564412296
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 4,
+        "OPEN": 28
+      },
+      "scene_index": 83,
+      "trial_id": "0083:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 411,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.11180765707550028,
+        -0.14906244012698816
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 83,
+      "trial_id": "0083:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 23,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3154546394428055,
+        -0.5542477016205789
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 15,
+        "OPEN": 0
+      },
+      "scene_index": 84,
+      "trial_id": "0084:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.41402315315744903,
+        0.6461307663345349
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 85,
+      "trial_id": "0085:red:yellow",
+      "instruction": "把红色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 43,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.2710170541127578,
+        -0.19441819502198399
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 28
+      },
+      "scene_index": 86,
+      "trial_id": "0086:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.09411288774100382,
+        -0.024100621954773783
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 0
+      },
+      "scene_index": 88,
+      "trial_id": "0088:red:blue",
+      "instruction": "把红色目标放进蓝色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5640501740730698,
+        0.20499342998546277
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 88,
+      "trial_id": "0088:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.4271679715558853,
+        -0.5852759841805822
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 28
+      },
+      "scene_index": 89,
+      "trial_id": "0089:red:red",
+      "instruction": "抓取红色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 6,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.09809534995788638,
+        0.3646991194666568
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 89,
+      "trial_id": "0089:blue:red",
+      "instruction": "抓取蓝色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 6,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.09809534995788638,
+        0.3646991194666568
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 89,
+      "trial_id": "0089:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 16,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3913260628364258,
+        -0.5986952626968833
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 89,
+      "trial_id": "0089:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5911162749750994,
+        0.24824367425506855
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 91,
+      "trial_id": "0091:blue:blue",
+      "instruction": "把蓝色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 26,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.02594483782661528,
+        0.43574128716804283
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 14,
+        "OPEN": 0
+      },
+      "scene_index": 92,
+      "trial_id": "0092:red:yellow",
+      "instruction": "抓取红色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.10369051658393183,
+        0.45785341471914626
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 92,
+      "trial_id": "0092:blue:yellow",
+      "instruction": "抓取蓝色方块并放置到黄色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 20,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.19437497679656635,
+        0.31213750100899823
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 92,
+      "trial_id": "0092:yellow:blue",
+      "instruction": "抓取黄色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 22,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.054974024879584076,
+        0.4773776418713771
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 92,
+      "trial_id": "0092:yellow:yellow",
+      "instruction": "抓取黄色方块并放置到黄色位置"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 50,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4973562930298082,
+        -0.8234287702565555
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 15,
+        "OPEN": 28
+      },
+      "scene_index": 94,
+      "trial_id": "0094:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 50,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5039707240683418,
+        -0.04742519497404608
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 28
+      },
+      "scene_index": 95,
+      "trial_id": "0095:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 56,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.21924933934654456,
+        -0.00540532859512053
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 16,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 96,
+      "trial_id": "0096:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 37,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2758451517637075,
+        -0.5442926223708081
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 97,
+      "trial_id": "0097:red:blue",
+      "instruction": "把红色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 37,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2758451517637075,
+        -0.5442926223708081
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 97,
+      "trial_id": "0097:red:yellow",
+      "instruction": "把红色目标放进黄色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 51,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1819568281712314,
+        -0.39213966059358907
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 14,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 5,
+        "OPEN": 28
+      },
+      "scene_index": 97,
+      "trial_id": "0097:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 13,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.1072955456360577,
+        0.030739341852173134
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 0
+      },
+      "scene_index": 100,
+      "trial_id": "0100:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 66,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.6103712017623635,
+        -0.630610534448787
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 49,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 13,
+        "OPEN": 0
+      },
+      "scene_index": 100,
+      "trial_id": "0100:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.18071634519231,
+        -0.31787523927005723
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 102,
+      "trial_id": "0102:red:blue",
+      "instruction": "把红色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 34,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4668542320951298,
+        0.03018128458100422
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 103,
+      "trial_id": "0103:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5834760758222983,
+        0.0419526046048051
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 104,
+      "trial_id": "0104:red:red",
+      "instruction": "抓取红色方块并放置到红色位置"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5834760758222983,
+        0.0419526046048051
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 104,
+      "trial_id": "0104:red:blue",
+      "instruction": "抓取红色方块并放置到蓝色位置"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5834760758222983,
+        0.0419526046048051
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 104,
+      "trial_id": "0104:red:yellow",
+      "instruction": "抓取红色方块并放置到黄色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 44,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.6280957619748229,
+        0.6753140692179955
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 4,
+        "OPEN": 28
+      },
+      "scene_index": 104,
+      "trial_id": "0104:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "DROP_OUTSIDE",
+      "failure": "DROP_OUTSIDE",
+      "ticks": 23,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": true,
+      "final_object": [
+        -0.15928450224951118,
+        -0.49853162415571106
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 6,
+        "OPEN": 6
+      },
+      "scene_index": 107,
+      "trial_id": "0107:red:blue",
+      "instruction": "抓取红色方块并放置到蓝色位置"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 52,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.11819721126482394,
+        0.14633840791927955
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 28
+      },
+      "scene_index": 108,
+      "trial_id": "0108:red:yellow",
+      "instruction": "把红色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.4968875025283535,
+        -0.14606061520463087
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 109,
+      "trial_id": "0109:blue:blue",
+      "instruction": "把蓝色目标放进蓝色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.4968875025283535,
+        -0.14606061520463087
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 109,
+      "trial_id": "0109:blue:yellow",
+      "instruction": "把蓝色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.31230491808907035,
+        -0.5700661503308446
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 14,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 2,
+        "OPEN": 28
+      },
+      "scene_index": 110,
+      "trial_id": "0110:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 408,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.24377064697745576,
+        -0.11904219131827572
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 110,
+      "trial_id": "0110:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "DROP_OUTSIDE",
+      "failure": "DROP_OUTSIDE",
+      "ticks": 22,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": true,
+      "final_object": [
+        -0.4149134979796905,
+        -0.28089561551824577
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 4,
+        "OPEN": 5
+      },
+      "scene_index": 112,
+      "trial_id": "0112:blue:blue",
+      "instruction": "把蓝色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.6196772872914844,
+        -0.11339365494182847
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 115,
+      "trial_id": "0115:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 24,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5150694985858018,
+        -0.29251228711048377
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 115,
+      "trial_id": "0115:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "DROP_OUTSIDE",
+      "failure": "DROP_OUTSIDE",
+      "ticks": 28,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": true,
+      "final_object": [
+        0.8393720870071203,
+        -0.5001466216048124
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 5
+      },
+      "scene_index": 118,
+      "trial_id": "0118:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 54,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.273724696748221,
+        0.697697001503909
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 6,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 28
+      },
+      "scene_index": 119,
+      "trial_id": "0119:red:red",
+      "instruction": "抓取红色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5852941702235279,
+        0.4533382464701855
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 120,
+      "trial_id": "0120:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5852941702235279,
+        0.4533382464701855
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 120,
+      "trial_id": "0120:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 10,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3813380647910442,
+        0.33712813932670926
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 2,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 123,
+      "trial_id": "0123:blue:red",
+      "instruction": "把蓝色方块放到红色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 42,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.7893502927845024,
+        0.4452125043071686
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 4,
+        "OPEN": 28
+      },
+      "scene_index": 123,
+      "trial_id": "0123:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 10,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3813380647910442,
+        0.33712813932670926
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 2,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 123,
+      "trial_id": "0123:blue:yellow",
+      "instruction": "把蓝色方块放到黄色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 408,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.21776522318483316,
+        0.061226603336687946
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 127,
+      "trial_id": "0127:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 52,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.268457147582837,
+        0.044907503382219986
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 6,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 127,
+      "trial_id": "0127:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 38,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5233369587439319,
+        0.49682347174995345
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 127,
+      "trial_id": "0127:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 38,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5233369587439319,
+        0.49682347174995345
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 127,
+      "trial_id": "0127:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 21,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.09977045679713395,
+        -0.07560177349388404
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 0
+      },
+      "scene_index": 129,
+      "trial_id": "0129:red:red",
+      "instruction": "把红色方块放到红色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 39,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4438630732266601,
+        0.0859275945366621
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 131,
+      "trial_id": "0131:blue:red",
+      "instruction": "抓取蓝色方块并放置到红色位置"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 54,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.35360947664977466,
+        0.26303238222900327
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 28
+      },
+      "scene_index": 132,
+      "trial_id": "0132:red:blue",
+      "instruction": "把红色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 16,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.47095693324252996,
+        -0.055970187165099605
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 132,
+      "trial_id": "0132:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 49,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.36409358822568105,
+        -0.5143543506424099
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 7,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 138,
+      "trial_id": "0138:red:blue",
+      "instruction": "把红色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 51,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3155703091530892,
+        -0.5734402464911944
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 6,
+        "OPEN": 28
+      },
+      "scene_index": 138,
+      "trial_id": "0138:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.24909889315989375,
+        -0.5765333894101778
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 139,
+      "trial_id": "0139:yellow:yellow",
+      "instruction": "把黄色目标放进黄色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 7,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.34633259638351777,
+        0.40832800842654093
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 141,
+      "trial_id": "0141:red:red",
+      "instruction": "把红色方块放到红色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 18,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.56201876444532,
+        -0.246736454356507
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 3,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 141,
+      "trial_id": "0141:red:blue",
+      "instruction": "把红色方块放到蓝色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 23,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.6030939598877963,
+        0.17802709919428464
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 142,
+      "trial_id": "0142:blue:yellow",
+      "instruction": "把蓝色目标放进黄色区域"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 14,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.6537448791803699,
+        -0.004083270327628549
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 0
+      },
+      "scene_index": 142,
+      "trial_id": "0142:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "CLOSE_MISS",
+      "failure": "CLOSE_MISS",
+      "ticks": 8,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.43159613613572245,
+        0.15468698840749417
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 143,
+      "trial_id": "0143:red:blue",
+      "instruction": "抓取红色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4233612187369692,
+        0.35123944126948115
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 150,
+      "trial_id": "0150:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4233612187369692,
+        0.35123944126948115
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 150,
+      "trial_id": "0150:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 53,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3636169703643202,
+        -0.486591674095449
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 12,
+        "CLOSE": 1,
+        "MOVE_TO_ZONE": 12,
+        "OPEN": 28
+      },
+      "scene_index": 156,
+      "trial_id": "0156:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 45,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2765596518533296,
+        0.30495857130173104
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 162,
+      "trial_id": "0162:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.4008919651333939,
+        -0.6287258031227777
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 8,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 163,
+      "trial_id": "0163:red:red",
+      "instruction": "把红色目标放进红色区域"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 27,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.03614918120090513,
+        -0.0470263979081745
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 164,
+      "trial_id": "0164:red:red",
+      "instruction": "抓取红色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 42,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.10322483318440673,
+        -0.2142800602248922
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 4,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 6,
+        "OPEN": 28
+      },
+      "scene_index": 168,
+      "trial_id": "0168:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 43,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.04569241702721313,
+        -0.3129931031611405
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 5,
+        "OPEN": 28
+      },
+      "scene_index": 168,
+      "trial_id": "0168:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.14253138709112922,
+        -0.1944693663345396
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 173,
+      "trial_id": "0173:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3709850914937064,
+        0.28585427039318323
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 174,
+      "trial_id": "0174:blue:red",
+      "instruction": "把蓝色方块放到红色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.6220415034904899,
+        0.1693247051030819
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 14,
+        "OPEN": 0
+      },
+      "scene_index": 175,
+      "trial_id": "0175:yellow:blue",
+      "instruction": "把黄色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 53,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.7317213251189552,
+        -0.5720334159855077
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 28
+      },
+      "scene_index": 176,
+      "trial_id": "0176:red:yellow",
+      "instruction": "抓取红色方块并放置到黄色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3799255977542505,
+        0.4030976979458555
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 176,
+      "trial_id": "0176:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.3799255977542505,
+        0.4030976979458555
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 176,
+      "trial_id": "0176:yellow:yellow",
+      "instruction": "抓取黄色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 48,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.22530731735126408,
+        -0.3456884126318802
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 10,
+        "OPEN": 28
+      },
+      "scene_index": 177,
+      "trial_id": "0177:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 40,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.2019095708239742,
+        -0.47791902712980844
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 6,
+        "OPEN": 28
+      },
+      "scene_index": 177,
+      "trial_id": "0177:yellow:blue",
+      "instruction": "把黄色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 17,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.08158004732810561,
+        -0.30556291176710104
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 177,
+      "trial_id": "0177:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 50,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.5641736176477696,
+        0.5840090645784478
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 28
+      },
+      "scene_index": 178,
+      "trial_id": "0178:red:yellow",
+      "instruction": "把红色目标放进黄色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 33,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.36692230258555414,
+        -0.21818001386914043
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 179,
+      "trial_id": "0179:blue:red",
+      "instruction": "抓取蓝色方块并放置到红色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 34,
+      "reached_target": true,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.36692230258555414,
+        -0.21818001386914043
+      ],
+      "failure_stage": "CLOSE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 6,
+        "CLOSE": 28,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 179,
+      "trial_id": "0179:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 41,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3539440437997461,
+        -0.27661594796501404
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 28
+      },
+      "scene_index": 180,
+      "trial_id": "0180:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "TARGET_NOT_REACHED",
+      "failure": "TARGET_NOT_REACHED",
+      "ticks": 260,
+      "reached_target": false,
+      "captured": false,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.03981912121336939,
+        -0.25515724843264964
+      ],
+      "failure_stage": "MOVE_TO_OBJECT",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 260,
+        "CLOSE": 0,
+        "MOVE_TO_ZONE": 0,
+        "OPEN": 0
+      },
+      "scene_index": 181,
+      "trial_id": "0181:red:blue",
+      "instruction": "把红色目标放进蓝色区域"
+    },
+    {
+      "block": "red",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 15,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.015197272876579378,
+        0.26358027487148217
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 3,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 0
+      },
+      "scene_index": 183,
+      "trial_id": "0183:red:yellow",
+      "instruction": "把红色方块放到黄色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 27,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.013181679717870636,
+        0.20364736058576605
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 14,
+        "OPEN": 0
+      },
+      "scene_index": 183,
+      "trial_id": "0183:yellow:yellow",
+      "instruction": "把黄色方块放到黄色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 45,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.09202563856143611,
+        0.603555014567418
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 28
+      },
+      "scene_index": 185,
+      "trial_id": "0185:blue:red",
+      "instruction": "抓取蓝色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 64,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.5554653433179865,
+        -0.28277128730721335
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 11,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 21,
+        "OPEN": 28
+      },
+      "scene_index": 187,
+      "trial_id": "0187:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 54,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.3255564295646669,
+        0.46950477683686803
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 13,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 8,
+        "OPEN": 28
+      },
+      "scene_index": 188,
+      "trial_id": "0188:blue:blue",
+      "instruction": "抓取蓝色方块并放置到蓝色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "yellow",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 418,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.9151011051508746,
+        0.27363329259025804
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 14,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 188,
+      "trial_id": "0188:yellow:yellow",
+      "instruction": "抓取黄色方块并放置到黄色位置"
+    },
+    {
+      "block": "blue",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 411,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.22992801721832545,
+        -0.4320810119549273
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 189,
+      "trial_id": "0189:blue:red",
+      "instruction": "把蓝色方块放到红色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "ZONE_NOT_REACHED",
+      "failure": "ZONE_NOT_REACHED",
+      "ticks": 409,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.16341134591860798,
+        -0.45794880307080627
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 5,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 400,
+        "OPEN": 0
+      },
+      "scene_index": 189,
+      "trial_id": "0189:yellow:red",
+      "instruction": "把黄色方块放到红色放置区"
+    },
+    {
+      "block": "red",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 15,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.742279590375215,
+        0.3138478846896055
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 9,
+        "OPEN": 0
+      },
+      "scene_index": 192,
+      "trial_id": "0192:red:red",
+      "instruction": "把红色方块放到红色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "MAX_TICKS",
+      "failure": "MAX_TICKS",
+      "ticks": 46,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.7728584871055153,
+        0.6808140966835898
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 7,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 28
+      },
+      "scene_index": 194,
+      "trial_id": "0194:yellow:red",
+      "instruction": "抓取黄色方块并放置到红色位置"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 26,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        -0.15982079967720403,
+        0.5931730716415102
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 10,
+        "CLOSE": 5,
+        "MOVE_TO_ZONE": 11,
+        "OPEN": 0
+      },
+      "scene_index": 195,
+      "trial_id": "0195:yellow:red",
+      "instruction": "把黄色方块放到红色放置区"
+    },
+    {
+      "block": "blue",
+      "zone": "blue",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "DROP_OUTSIDE",
+      "failure": "DROP_OUTSIDE",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": true,
+      "in_target": false,
+      "released_in_open": true,
+      "final_object": [
+        -0.08415183831391161,
+        -0.11460296849310378
+      ],
+      "failure_stage": "OPEN",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 9,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 7,
+        "OPEN": 5
+      },
+      "scene_index": 198,
+      "trial_id": "0198:blue:blue",
+      "instruction": "把蓝色方块放到蓝色放置区"
+    },
+    {
+      "block": "yellow",
+      "zone": "red",
+      "success": false,
+      "environment_success": false,
+      "environment_failure": "OBJECT_SLIPPED",
+      "failure": "OBJECT_SLIPPED",
+      "ticks": 25,
+      "reached_target": true,
+      "captured": true,
+      "reached_zone": false,
+      "in_target": false,
+      "released_in_open": false,
+      "final_object": [
+        0.6371842402645886,
+        -0.32660307007246486
+      ],
+      "failure_stage": "MOVE_TO_ZONE",
+      "phase_ticks": {
+        "MOVE_TO_OBJECT": 2,
+        "CLOSE": 4,
+        "MOVE_TO_ZONE": 19,
+        "OPEN": 0
+      },
+      "scene_index": 199,
+      "trial_id": "0199:yellow:red",
+      "instruction": "把黄色目标放进红色区域"
+    }
+  ]
+}

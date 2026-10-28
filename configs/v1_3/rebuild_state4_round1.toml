@@ -1,0 +1,18 @@
+# Manifest for the V1.3 rebuild. train_v13.py receives these values as CLI
+# arguments; this file records the exact intended run for reproducibility.
+data = "data/v1.3_state4_three_color_1000_200_200"
+init_checkpoint = "checkpoints/v1.3_init.pt"
+output_checkpoint = "checkpoints/v1.3_base.pt"
+epochs = 100
+batch_ticks = 8
+learning_rate = 0.0001
+min_epochs = 10
+patience = 15
+min_pair_ratio = 0.95
+seed = 20261027
+evaluation_standard = "official"
+evaluation_scene_seed = 20261105
+evaluation_scenes = 200
+
+# Planned command:
+# python scripts/v1_3/train_v13.py --data data/v1.3_state4_three_color_1000_200_200 --init-ckpt checkpoints/v1.3_init.pt --out v1.3_base --epochs 100 --batch-ticks 8 --lr 1e-4 --min-epochs 10 --patience 15 --min-pair-ratio 0.95
