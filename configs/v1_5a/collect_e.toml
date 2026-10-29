@@ -1,0 +1,12 @@
+[collection]
+source_checkpoint = "checkpoints/v1.5c.pt"
+source_data = "data/v1.5c"
+output_data = "data/v1.5e_corrections"
+
+# 从 V1.5c 的训练场景中无放回抽取 600 个场景 × 9 个颜色组合。
+# val/test 从不参与纠偏数据采集。
+scenes = 600
+seed = 5105
+rollout_max_ticks = 600
+oracle_max_ticks = 80
+failure_types = ["DROP_OUTSIDE", "WRONG_ZONE", "OBJECT_SLIPPED"]

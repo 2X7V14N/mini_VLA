@@ -1,0 +1,31 @@
+[data]
+base_root = "data/v1.5c"
+correction_root = "data/v1.5e_corrections"
+
+[model]
+init_checkpoint = "checkpoints/v1.5c.pt"
+output_checkpoint = "checkpoints/v1.5e.pt"
+
+[training]
+epochs = 15
+batch_size = 64
+patience = 5
+policy_lr = 0.000001
+auxiliary_lr = 0.00001
+weight_decay = 0.0001
+grad_clip = 0.4
+max_skipped_batches = 8
+loader_workers = 2
+prefetch_factor = 2
+cache_episodes = 64
+
+# 每个训练 batch 整体来自 base 或 correction，避免跨 episode 的随机解压。
+correction_ratio = 0.30
+correction_action_multiplier = 1.5
+
+action_weight = 1.0
+block_position_weight = 0.05
+block_velocity_weight = 0.02
+zone_position_weight = 0.10
+zone_velocity_weight = 0.08
+future_zone_position_weight = 0.12

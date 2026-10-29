@@ -1,0 +1,26 @@
+[data]
+root = "data/v1.5a_round1"
+train_split = "train"
+val_split = "val"
+
+[model]
+init_checkpoint = "checkpoints/v1.3_final.pt"
+output_checkpoint = "checkpoints/v1.5a.pt"
+history = 4
+
+[training]
+epochs = 30
+batch_size = 64
+# 已迁移的 V1.3 主干使用保守微调；时间编码器与辅助头从随机初始化，
+# 因此单独使用较高学习率。
+policy_lr = 0.00001
+auxiliary_lr = 0.00005
+weight_decay = 0.0001
+adam_eps = 0.000001
+grad_clip = 0.5
+max_skipped_batches = 8
+patience = 8
+action_weight = 1.0
+position_weight = 0.20
+velocity_weight = 0.10
+temporal_weight = 0.05

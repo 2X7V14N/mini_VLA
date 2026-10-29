@@ -1,0 +1,16 @@
+[data]
+root = "data/v1.5c_smoke"
+
+[model]
+init_checkpoint = "checkpoints/v1.3_final.pt"
+output_checkpoint = "checkpoints/v1.5c_smoke.pt"
+history = 4
+future_ticks = 4
+
+[training]
+epochs = 1
+batch_size = 16
+policy_lr = 0.00001
+auxiliary_lr = 0.00005
+weight_decay = 0.0001
+patience = 1
