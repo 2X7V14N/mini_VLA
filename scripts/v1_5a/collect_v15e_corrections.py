@@ -120,7 +120,7 @@ def rollout_policy(model, tokenizer, history, device, meta, max_ticks):
     return info, start
 
 
-def save_segment(path, rows, meta, info, correction_id):
+def save_segment(path, rows, meta, policy_info, oracle_info, correction_id):
     np.savez_compressed(
         path,
         image=np.stack([row["image"] for row in rows]),
@@ -136,7 +136,10 @@ def save_segment(path, rows, meta, info, correction_id):
         gripper_open=np.asarray([row["gripper_open"] for row in rows], dtype=np.float32),
         exec_block=np.asarray(meta["block"]), exec_zone=np.asarray(meta["zone"]),
         scene_id=np.asarray(f"correction_{correction_id:05d}_{meta['scene_id']}"),
-        source_failure=np.asarray(info["failure"] or ""), success=np.bool_(info["success"]),
+        source_failure=np.asarray(policy_info["failure"] or ""),
+        # This file is a successful oracle rescue segment even though the
+        # policy state that triggered it was a failure.
+        success=np.bool_(oracle_info["success"]),
     )
 
 
@@ -178,7 +181,10 @@ def main():
             rows, oracle_info = record_oracle_segment(start, meta, int(cfg["oracle_max_ticks"]))
             if oracle_info["success"]:
                 stats["oracle_success"] += 1
-                save_segment(train_out / f"ep_{stats['corrections']:05d}.npz", rows, meta, policy_info, stats["corrections"])
+                save_segment(
+                    train_out / f"ep_{stats['corrections']:05d}.npz",
+                    rows, meta, policy_info, oracle_info, stats["corrections"],
+                )
                 stats["corrections"] += 1; stats["frames"] += len(rows)
         if index % 50 == 0 or index == len(selected):
             print(f"{index}/{len(selected)} rollouts; corrections={stats['corrections']}; oracle={stats['oracle_success']}/{stats['eligible']}", flush=True)
