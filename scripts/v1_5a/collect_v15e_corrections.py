@@ -1,6 +1,6 @@
-"""Collect V1.5e DAgger-style placement corrections from V1.5c rollouts.
+"""Collect DAgger-style placement corrections from a V1.5 dynamic rollout.
 
-Only train scenes are replayed.  A correction starts from the policy's own
+Only train scenes are replayed. A correction starts from the policy's own
 carried-object state immediately before a placement failure, then follows the
 simulator oracle.  Thus the action target is defined on states the policy
 actually visits, not only on ideal expert trajectories.
@@ -32,7 +32,7 @@ COLORS = ("red", "blue", "yellow")
 def load_model(path, device):
     checkpoint = torch.load(path, map_location=device, weights_only=False)
     if checkpoint.get("model_type") != "LanguageConditionedMiniVLA3ColorDynamicBoth":
-        raise ValueError("纠偏采集必须使用 V1.5c checkpoint")
+        raise ValueError("纠偏采集必须使用 V1.5 双动态 checkpoint")
     tokenizer = SimpleCharTokenizer(checkpoint["vocab"], int(checkpoint["max_length"]))
     model = LanguageConditionedMiniVLA3ColorDynamicBoth(
         vocab_size=tokenizer.vocab_size, max_length=int(checkpoint["max_length"]),
@@ -152,7 +152,7 @@ def main():
     checkpoint, source = ROOT / cfg["source_checkpoint"], ROOT / cfg["source_data"] / "train"
     output = ROOT / cfg["output_data"]
     if not checkpoint.is_file() or not source.is_dir():
-        raise FileNotFoundError("找不到 V1.5c checkpoint 或训练数据")
+        raise FileNotFoundError("找不到动态 checkpoint 或训练数据")
     paths = sorted(source.glob("ep_*.npz"))
     requested = int(cfg["scenes"]) * 9
     if requested > len(paths):

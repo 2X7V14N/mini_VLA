@@ -32,7 +32,8 @@ def load_model(path, device):
         yellow_token_id=tokenizer.stoi["黄"],
     )
     model.load_state_dict(checkpoint["model_state"], strict=True)
-    return model.to(device).eval(), tokenizer, int(checkpoint["history"])
+    return (model.to(device).eval(), tokenizer, int(checkpoint["history"]),
+            str(checkpoint.get("stage", "v1.5c")))
 
 
 def metadata(path):
@@ -98,14 +99,14 @@ def main():
     if len(paths) != args.scenes * 9:
         raise ValueError(f"测试数据不足：需要 {args.scenes * 9} 条，实际 {len(paths)} 条")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model, tokenizer, history = load_model(ROOT / args.checkpoint, device)
+    model, tokenizer, history, stage = load_model(ROOT / args.checkpoint, device)
     rows = []
     for index, path in enumerate(paths, 1):
         rows.append(run_episode(model, tokenizer, history, device, path, args.max_ticks))
         if index % 50 == 0 or index == len(paths):
             print(f"{index}/{len(paths)} success={sum(row['success'] for row in rows)}/{index}", flush=True)
     success = sum(row["success"] for row in rows)
-    print(f"v1.5c: success={success}/{len(rows)} ({success / len(rows):.1%})")
+    print(f"{stage}: success={success}/{len(rows)} ({success / len(rows):.1%})")
     print("failures=" + str(Counter(row["failure"] or "SUCCESS" for row in rows)))
     print("stages=" + str(Counter(row["failure_stage"] for row in rows if not row["success"])))
     print("pipeline: target={:.1%}; captured={:.1%}; zone={:.1%}".format(

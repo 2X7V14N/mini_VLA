@@ -1,4 +1,4 @@
-"""V1.5e: fine-tune V1.5c with closed-loop placement corrections."""
+"""Shared V1.5 closed-loop-correction fine-tuner (V1.5e and later)."""
 
 import argparse
 import sys
@@ -64,7 +64,7 @@ class EpisodeMixtureBatchSampler(Sampler):
 
 def make_model(checkpoint, tokenizer):
     if checkpoint.get("model_type") != "LanguageConditionedMiniVLA3ColorDynamicBoth":
-        raise ValueError("V1.5e 必须从 V1.5c checkpoint 初始化")
+        raise ValueError("闭环纠偏微调必须从 V1.5 双动态 checkpoint 初始化")
     model = LanguageConditionedMiniVLA3ColorDynamicBoth(
         vocab_size=tokenizer.vocab_size, max_length=int(checkpoint["max_length"]),
         state_dim=int(checkpoint["state_dim"]), action_dim=int(checkpoint["action_dim"]),
@@ -133,6 +133,7 @@ def main():
     cfg = tomllib.loads((ROOT / args.config).read_text(encoding="utf-8"))
     data_cfg, model_cfg, train_cfg = cfg["data"], cfg["model"], cfg["training"]
     init, output = ROOT / model_cfg["init_checkpoint"], ROOT / model_cfg["output_checkpoint"]
+    stage = str(model_cfg.get("stage", "v1.5e"))
     checkpoint = torch.load(init, map_location="cpu", weights_only=False)
     tokenizer = SimpleCharTokenizer(checkpoint["vocab"], int(checkpoint["max_length"]))
     history, future = int(checkpoint["history"]), int(checkpoint["future_ticks"])
@@ -164,7 +165,7 @@ def main():
         print(f"[check-only] device={device}; base={len(base_train)} correction={len(correction_train)} val={len(val)}")
         print(f"[check-only] total={float(total):.6f}; " + "; ".join(f"{k}={float(v):.6f}" for k, v in parts.items()))
         return 0
-    print(f"device={device}; initialization={init}; model=V1.5e; output={output}", flush=True)
+    print(f"device={device}; initialization={init}; model={stage}; output={output}", flush=True)
     print(f"samples: base={len(base_train)} correction={len(correction_train)} val={len(val)}; correction_ratio={train_cfg['correction_ratio']}; epochs={train_cfg['epochs']}", flush=True)
     print(f"weights={weights}; correction_action_multiplier={train_cfg['correction_action_multiplier']}; lr={train_cfg['policy_lr']}/{train_cfg['auxiliary_lr']}; workers={workers}", flush=True)
     best, stale = float("inf"), 0
@@ -175,7 +176,7 @@ def main():
         print(f"epoch {epoch}/{train_cfg['epochs']} train={train['total']:.5f} val={validation['total']:.5f}; action={validation['action']:.5f}; future={validation['future_zone_position']:.5f}; skipped={skipped_train}/{skipped_val} ({time.time()-started:.1f}s)", flush=True)
         if validation["total"] < best:
             best, stale = validation["total"], 0; output.parent.mkdir(parents=True, exist_ok=True)
-            torch.save({"model_type": "LanguageConditionedMiniVLA3ColorDynamicBoth", "stage": "v1.5e", "model_state": model.state_dict(), "vocab": checkpoint["vocab"], "max_length": checkpoint["max_length"], "state_dim": checkpoint["state_dim"], "action_dim": checkpoint["action_dim"], "chunk_size": checkpoint["chunk_size"], "history": history, "future_ticks": future, "best_val": best, "epoch": epoch, "init_checkpoint": str(init)}, output)
+            torch.save({"model_type": "LanguageConditionedMiniVLA3ColorDynamicBoth", "stage": stage, "model_state": model.state_dict(), "vocab": checkpoint["vocab"], "max_length": checkpoint["max_length"], "state_dim": checkpoint["state_dim"], "action_dim": checkpoint["action_dim"], "chunk_size": checkpoint["chunk_size"], "history": history, "future_ticks": future, "best_val": best, "epoch": epoch, "init_checkpoint": str(init)}, output)
         else:
             stale += 1
             if stale >= int(train_cfg["patience"]):

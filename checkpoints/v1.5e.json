@@ -1,0 +1,14 @@
+{
+  "checkpoint": "checkpoints/v1.5e.pt",
+  "stage": "v1.5e",
+  "model_type": "LanguageConditionedMiniVLA3ColorDynamicBoth",
+  "source_checkpoint": "checkpoints/v1.5c.pt",
+  "best_val": 0.028550848112769173,
+  "test_report": "reports/v1.5e_results.json",
+  "test_trials": 1800,
+  "test_successes": 1428,
+  "test_success_rate": 0.7933333333333333,
+  "drop_outside": 237,
+  "object_slipped": 43,
+  "note": "Weights are kept locally and excluded from Git by repository policy."
+}
