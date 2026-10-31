@@ -1,7 +1,7 @@
 """V1.1 第 6 步：闭环评测。
 
-    python scripts/eval_v11_closed_loop.py
-    python scripts/eval_v11_closed_loop.py --scenes 50 --no-plot
+    python scripts/v1_1/eval_v11_closed_loop.py
+    python scripts/v1_1/eval_v11_closed_loop.py --scenes 50 --no-plot
 
 用 test 集的场景（模型完全没见过），红蓝指令各跑一次 = 400 次闭环。
 模型每 tick 输出 action_chunk，只执行第 1 步（receding horizon）。
@@ -20,7 +20,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from mini_vla.data.grasp_place import (      # noqa: E402

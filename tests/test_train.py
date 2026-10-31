@@ -1,4 +1,4 @@
-from scripts.train import PairedBatchSampler
+from scripts.v1.train import PairedBatchSampler
 
 
 def test_paired_batch_keeps_pairs_together():

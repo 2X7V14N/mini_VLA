@@ -1,10 +1,10 @@
 """V1.1 交互式二维抓取演示。
 
 启动：
-    python scripts/demo_grasp_place.py
+    python scripts/v1_1/demo_grasp_place.py
 
 使用训练好的模型闭环：
-    python scripts/demo_grasp_place.py \
+    python scripts/v1_1/demo_grasp_place.py \
         --checkpoint checkpoints/v1.1_grasp_place.pt
 
 每轮会随机生成一个合法场景，然后在终端输入“红色”或“蓝色”。
@@ -20,7 +20,7 @@ from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from mini_vla.data.grasp_place import (  # noqa: E402

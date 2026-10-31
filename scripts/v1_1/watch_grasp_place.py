@@ -1,9 +1,9 @@
 """V1.1 可视化：把状态机的四个阶段在二维画布上跑一遍。
 
-    python scripts/watch_grasp_place.py
-    python scripts/watch_grasp_place.py --color blue
-    python scripts/watch_grasp_place.py --seed 7 --speed 0.01
-    python scripts/watch_grasp_place.py --no-wait      # 演示完窗口自动关
+    python scripts/v1_1/watch_grasp_place.py
+    python scripts/v1_1/watch_grasp_place.py --color blue
+    python scripts/v1_1/watch_grasp_place.py --seed 7 --speed 0.01
+    python scripts/v1_1/watch_grasp_place.py --no-wait      # 演示完窗口自动关
 
 画的东西：
     红点 / 蓝点   两个目标（被搬走的那个会跟着动）
@@ -24,7 +24,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place import (      # noqa: E402
     GraspPlaceEnv, Scene, sample_scene, MAX_STEP, ZONE_CENTER, ZONE_HALF,

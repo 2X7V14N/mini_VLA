@@ -1,6 +1,6 @@
 """V1.1 第 1 步验收：用【写死的动作序列】把四个阶段跑通。
 
-    python scripts/test_grasp_place_env.py
+    python scripts/v1_1/test_grasp_place_env.py
     
 """
 
@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place import (
     GraspPlaceEnv, Scene, ZONE_CENTER, ZONE_HALF, MAX_STEP, REACH_TOL,

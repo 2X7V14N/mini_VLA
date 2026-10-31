@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.instructions import (
     SEEN_TEMPLATES, UNSEEN_KNOWN_CHARS, UNSEEN_NOVEL_CHARS,

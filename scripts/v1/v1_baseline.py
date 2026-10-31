@@ -1,7 +1,7 @@
 """V1 回归基线：跑一遍 V1 的测试和语言评测，把结果存档。
 
-    python scripts/v1_baseline.py            # 建立 / 刷新基线
-    python scripts/v1_baseline.py --check    # 和已存基线比对，有差异就退出码 1
+    python scripts/v1/v1_baseline.py            # 建立 / 刷新基线
+    python scripts/v1/v1_baseline.py --check    # 和已存基线比对，有差异就退出码 1
 
 ★ 为什么必须先做这一步
   V1.1 会新增模块。如果哪天 V1 的指标变了，我们得能立刻回答
@@ -18,7 +18,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 PY = sys.executable
 OUT_DIR = ROOT / "docs" / "experiments"
 OUT_JSON = OUT_DIR / "v1_baseline.json"
@@ -70,7 +70,7 @@ def collect():
     n_passed = parse_pytest(out_t)
 
     print("② V1 语言评测（100 场景 × 3 组说法，约 20~60 秒）...", flush=True)
-    rc_e, out_e = run([PY, "scripts/eval_language.py"])
+    rc_e, out_e = run([PY, "scripts/v1/eval_language.py"])
     rates, expert = parse_eval(out_e)
 
     return {

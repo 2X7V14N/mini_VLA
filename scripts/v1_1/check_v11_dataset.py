@@ -1,7 +1,7 @@
 """V1.1 第 4 步：检查落盘的数据集 + 开训前的状态泄露检查。
 
-    python scripts/check_v11_dataset.py --data data/v1.1_smoke
-    python scripts/check_v11_dataset.py --data data/v1.1
+    python scripts/v1_1/check_v11_dataset.py --data data/v1.1_smoke
+    python scripts/v1_1/check_v11_dataset.py --data data/v1.1
 
 分两段：
   A. 契约检查 —— 配对、指令、标签、grip、搬运、形状、划分
@@ -16,7 +16,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place_data import TEMPLATES     # noqa: E402
 

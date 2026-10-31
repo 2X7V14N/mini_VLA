@@ -1,8 +1,8 @@
 """V1.1 第 5 步：训练最小改动模型。
 
-    python scripts/train_v11.py --limit 2000 --epochs 3      # 冒烟
-    python scripts/train_v11.py                              # 正式
-    python scripts/train_v11.py --epochs 40 --no-plot
+    python scripts/v1_1/train_v11.py --limit 2000 --epochs 3      # 冒烟
+    python scripts/v1_1/train_v11.py                              # 正式
+    python scripts/v1_1/train_v11.py --epochs 40 --no-plot
 
 和 V1 相比只改两处：
     状态编码 2 -> 3 维
@@ -27,7 +27,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 

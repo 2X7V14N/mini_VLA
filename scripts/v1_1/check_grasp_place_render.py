@@ -1,6 +1,6 @@
 """V1.1 第 3 步（上）：渲染检查。
 
-    python scripts/check_grasp_place_render.py
+    python scripts/v1_1/check_grasp_place_render.py
 
 只回答一个问题：**64×64 的图里，模型能不能看见它该看见的东西？**
 
@@ -16,14 +16,14 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place import GraspPlaceEnv, Scene
 from mini_vla.data.grasp_place_expert import expert_action
 from mini_vla.data.grasp_place_render import render, RED, BLUE, GREEN, ZONE
 from mini_vla.data.synthetic import _world_to_pixel
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 OUT = ROOT / "docs" / "experiments" / "v1.1_render_phases.png"
 
 SCENE = Scene(red=np.array([0.40, 0.20]),

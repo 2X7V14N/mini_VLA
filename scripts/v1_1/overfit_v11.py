@@ -1,6 +1,6 @@
 """V1.1 诊断：小数据过拟合探针（专测语言通路）。
 
-    python scripts/overfit_v11.py --pairs 64 --epochs 500
+    python scripts/v1_1/overfit_v11.py --pairs 64 --epochs 500
 """
 
 import argparse
@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 

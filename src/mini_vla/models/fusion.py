@@ -44,7 +44,9 @@ class MultiModalFusion(nn.Module):
         # 前三段：查询(1) + 视觉(16) + ... 都是 False
         # 提示：用 text_padding_mask.new_zeros(B, n) 造全 False，
         #       .new_zeros 会自动沿用 dtype 和 device，不用手写
-        head = text_padding_mask.new_zeros(B, 1 + self.num_vision_tokens)   # (B, 17)
+        # Vision token count depends on input resolution; derive the mask from
+        # the actual sequence length (16 tokens at 64px, 64 at 128px).
+        head = text_padding_mask.new_zeros(B, 1 + vision_tokens.shape[1])
         tail = text_padding_mask.new_zeros(B, 1)                            # (B, 1)
 
         full_mask = torch.cat([head, text_padding_mask, tail], dim=1)                    # 中间填什么？

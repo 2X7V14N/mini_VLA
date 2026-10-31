@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mini-vla"
-version = "1.1.0"
-description = "A small, reproducible vision-language-action learning project with 2D V1 and V1.1 grasp-and-place tasks."
+version = "1.5.0"
+description = "A reproducible 2D vision-language-action project with moving-object and moving-goal grasp-and-place tasks."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

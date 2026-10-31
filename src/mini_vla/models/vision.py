@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 class VisionEncoder(nn.Module):
     def __init__(self):
@@ -21,10 +22,25 @@ class VisionEncoder(nn.Module):
 
 
     def forward(self,image):
+        tokens, _ = self.forward_with_intermediate(image)
+        return tokens
 
-        x = self.stem(image)
-        x = x.flatten(2)      # (B, 128, 4, 4) → (B, 128, 16)
+    def forward_with_intermediate(self, image):
+        """Return final tokens and the shared 8x8 feature map for auxiliary heads."""
+        x = image
+        high_resolution = None
+        for index, layer in enumerate(self.stem):
+            x = layer(x)
+            if index == 5:
+                high_resolution = x
+        h, w = x.shape[-2:]
+        pos = self.pos_embed.transpose(1, 2).reshape(1, 128, 4, 4)
+        if (h, w) != (4, 4):
+            pos = F.interpolate(pos, size=(h, w), mode="bicubic",
+                                align_corners=False)
+        pos = pos.flatten(2).transpose(1, 2)
+        x = x.flatten(2)      # (B, 128, H, W) → (B, 128, H*W)
         x = x.transpose(1, 2) # (B, 128, 16)  → (B, 16, 128)
-        x = x + self.pos_embed
+        x = x + pos
 
-        return x
+        return x, high_resolution

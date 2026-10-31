@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))   # ← 见下面的说明
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))   # ← 见下面的说明
 
 from mini_vla.data.synthetic import _sample_two_goals, _sample_robot
 from mini_vla.evaluation.rollout import (

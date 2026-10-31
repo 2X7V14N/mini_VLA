@@ -1,7 +1,7 @@
 """V1.1 第 2 步：专家验收。
 
-    python scripts/eval_grasp_place_expert.py
-    python scripts/eval_grasp_place_expert.py --scenes 200 --sheet 12
+    python scripts/v1_1/eval_grasp_place_expert.py
+    python scripts/v1_1/eval_grasp_place_expert.py --scenes 200 --sheet 12
 
 跑 200 个随机起点场景 × 红蓝两条指令 = 400 条 episode，检查：
 
@@ -20,7 +20,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place import (      # noqa: E402
     GraspPlaceEnv, sample_scene, CAPTURE_RADIUS, MAX_STEP,
@@ -119,13 +119,13 @@ def save_sheet(rows, n_show):
     for ax in axes[len(pick):]:
         ax.axis("off")
 
-    out = Path(__file__).resolve().parent.parent / "docs" / "experiments"
+    out = Path(__file__).resolve().parent.parent.parent / "docs" / "experiments"
     out.mkdir(parents=True, exist_ok=True)
     path = out / "v1.1_expert_trajectories.png"
     fig.tight_layout()
     fig.savefig(path, dpi=110)
     plt.close(fig)
-    print(f"\n轨迹拼图已存：{path.relative_to(Path(__file__).resolve().parent.parent)}")
+    print(f"\n轨迹拼图已存：{path.relative_to(Path(__file__).resolve().parent.parent.parent)}")
 
 
 def main():

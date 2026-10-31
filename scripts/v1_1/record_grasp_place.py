@@ -1,7 +1,7 @@
 """V1.1 第 3 步：批量录制数据集。
 
-    python scripts/record_grasp_place.py                       # 1000/200/200 场景
-    python scripts/record_grasp_place.py --train 50 --val 10 --test 10   # 先试小的
+    python scripts/v1_1/record_grasp_place.py                       # 1000/200/200 场景
+    python scripts/v1_1/record_grasp_place.py --train 50 --val 10 --test 10   # 先试小的
 
 每个场景跑【一条】物理 rollout，每 tick 生成红蓝两条配对样本。
 产物：data/v1.1/{train,val,test}/ep_XXXX.npz + summary.json
@@ -21,14 +21,14 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place import sample_scene          # noqa: E402
 from mini_vla.data.grasp_place_data import (                # noqa: E402
     record_rollout, TEMPLATES, COLORS,
 )
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 FAIL_CODES = ("TARGET_NOT_REACHED", "CLOSE_MISS", "OBJECT_SLIPPED",
               "ZONE_NOT_REACHED", "DROP_OUTSIDE", "MAX_TICKS")
 

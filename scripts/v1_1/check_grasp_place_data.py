@@ -1,7 +1,7 @@
 """V1.1 第 3 步（上）验收：录 5 条 rollout，检查配对结构。
 
-    python scripts/check_grasp_place_data.py              # 5 条
-    python scripts/check_grasp_place_data.py --rollouts 20
+    python scripts/v1_1/check_grasp_place_data.py              # 5 条
+    python scripts/v1_1/check_grasp_place_data.py --rollouts 20
 
 只查结构，不存大文件：
     ① 样本顺序是 red_t, blue_t, red_{t+1}, blue_{t+1}, …
@@ -18,7 +18,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from mini_vla.data.grasp_place import (      # noqa: E402
     GraspPlaceEnv, sample_scene, MAX_STEP, ZONE_CENTER,

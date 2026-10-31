@@ -47,7 +47,7 @@
 | batch | 16（用 `PairedBatchSampler` 保证配对完整） |
 | 早停 | patience=20，第 111 轮触发，最佳在第 91 轮 |
 
-**复现命令**：`python -u scripts/train.py`（`SEED=0`，重跑应得到同一结果）
+**复现命令**：`python -u scripts/v1/train.py`（`SEED=0`，重跑应得到同一结果）
 
 ---
 
@@ -184,7 +184,7 @@ epoch 111  早停触发（连续 20 轮未改善）
 
 ### 闭环 rollout（200 场景 × 2 指令 = 400 次）
 
-复现命令：`python -u scripts/rollout.py`（`SCENE_SEED=12345`，`RANDOM_SEED=999`）
+复现命令：`python -u scripts/v1/rollout.py`（`SCENE_SEED=12345`，`RANDOM_SEED=999`）
 
 | 策略 | 红色成功率 | 蓝色成功率 | 总体 | 平均最终距离 | 平均步数 |
 |---|---|---|---|---|---|
@@ -209,7 +209,7 @@ epoch 111  早停触发（连续 20 轮未改善）
 
 ## 九、注意事项与已知限制
 
-### 复现性陷阱（已在 `scripts/rollout.py` 修复）
+### 复现性陷阱（已在 `scripts/v1/rollout.py` 修复）
 
 **测试场景由随机数流生成。最初场景生成和随机策略 rollout 共用同一个 `rng` —— 两者的消耗会互相影响，导致同一份模型在不同次运行中拿到不同的测试场景和不同的分数。**
 
